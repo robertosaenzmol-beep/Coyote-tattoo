@@ -28,35 +28,38 @@ const tattoos = [
   { src: '/images/gallery/tattoo-26.webp', alt: 'Tatuaje' },
 ];
 
-// Pair layouts: alternating size patterns for visual variety
-const pairLayouts = [
-  { left: 'tall',   right: 'short' },   // tall + short
-  { left: 'short',  right: 'tall' },    // short + tall
-  { left: 'square', right: 'wide' },    // square + wide
-  { left: 'wide',   right: 'square' },  // wide + square
-  { left: 'tall',   right: 'square' },  // tall + square
-  { left: 'square', right: 'tall' },    // square + tall
+// Height patterns for pairs: alternating for visual variety
+const heightPatterns = [
+  ['420px', '320px'],  // tall + short
+  ['320px', '420px'],  // short + tall
+  ['370px', '370px'],  // equal
+  ['450px', '300px'],  // extra tall + compact
+  ['300px', '450px'],  // compact + extra tall
+  ['370px', '370px'],  // equal
 ];
 
-const sizeMap: Record<string, string> = {
-  tall:   'aspect-ratio: 3/4;',
-  short:  'aspect-ratio: 4/3;',
-  square: 'aspect-ratio: 1/1;',
-  wide:   'aspect-ratio: 16/10;',
-};
+// Width patterns for pairs
+const widthPatterns = [
+  ['340px', '280px'],
+  ['280px', '340px'],
+  ['300px', '320px'],
+  ['360px', '260px'],
+  ['260px', '360px'],
+  ['310px', '310px'],
+];
 
 // Group tattoos in pairs
-const pairs: Array<{ left: typeof tattoos[0]; right: typeof tattoos[0] | null; layout: typeof pairLayouts[0] }> = [];
+const pairs: Array<{ top: typeof tattoos[0]; bottom: typeof tattoos[0] | null; pairIndex: number }> = [];
 for (let i = 0; i < tattoos.length; i += 2) {
   pairs.push({
-    left: tattoos[i],
-    right: tattoos[i + 1] || null,
-    layout: pairLayouts[Math.floor(i / 2) % pairLayouts.length],
+    top: tattoos[i],
+    bottom: tattoos[i + 1] || null,
+    pairIndex: Math.floor(i / 2),
   });
 }
 ---
 
-<section id="trabajo" style="padding: 80px 24px; max-width: 1200px; margin: 0 auto;">
+<section id="trabajo" style="padding: 80px 0; max-width: 1440px; margin: 0 auto;">
 
   <!-- Section label -->
   <p style="
@@ -64,43 +67,55 @@ for (let i = 0; i < tattoos.length; i += 2) {
     font-size: 12px; font-weight: 500;
     letter-spacing: -0.01em; color: #9b9b9b;
     margin-bottom: 32px;
+    padding: 0 24px;
   ">Trabajo reciente</p>
 
-  <!-- Pairs grid -->
-  <div class="gallery-pairs">
-    {pairs.map((pair, pi) => (
-      <div class="pair-row reveal" style="
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-bottom: 16px;
-        align-items: start;
-      ">
-        <!-- Left image -->
-        <div class="img-frame thumb-wrap"
-             role="button" tabindex="0"
-             data-index={pi * 2}
-             aria-label={`Ver ${pair.left.alt}`}
-             style={`cursor: pointer; overflow: hidden; ${sizeMap[pair.layout.left]}`}>
-          <img src={pair.left.src} alt={pair.left.alt}
-               loading={pi < 2 ? 'eager' : 'lazy'}
-               style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-        </div>
-
-        <!-- Right image -->
-        {pair.right && (
+  <!-- Horizontal scroll track -->
+  <div id="gallery-track" class="gallery-scroll" style="
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 24px 20px;
+    cursor: grab;
+    align-items: start;
+  ">
+    {pairs.map((pair, pi) => {
+      const hp = heightPatterns[pi % heightPatterns.length];
+      const wp = widthPatterns[pi % widthPatterns.length];
+      return (
+        <div class="gallery-column reveal" style={`
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          flex-shrink: 0;
+        `}>
+          {/* Top image */}
           <div class="img-frame thumb-wrap"
                role="button" tabindex="0"
-               data-index={pi * 2 + 1}
-               aria-label={`Ver ${pair.right.alt}`}
-               style={`cursor: pointer; overflow: hidden; ${sizeMap[pair.layout.right]}`}>
-            <img src={pair.right.src} alt={pair.right.alt}
-                 loading="lazy"
+               data-index={pi * 2}
+               aria-label={`Ver ${pair.top.alt}`}
+               style={`cursor: pointer; overflow: hidden; width: ${wp[0]}; height: ${hp[0]};`}>
+            <img src={pair.top.src} alt={pair.top.alt}
+                 loading={pi < 3 ? 'eager' : 'lazy'}
                  style="width: 100%; height: 100%; object-fit: cover; display: block;" />
           </div>
-        )}
-      </div>
-    ))}
+
+          {/* Bottom image */}
+          {pair.bottom && (
+            <div class="img-frame thumb-wrap"
+                 role="button" tabindex="0"
+                 data-index={pi * 2 + 1}
+                 aria-label={`Ver ${pair.bottom.alt}`}
+                 style={`cursor: pointer; overflow: hidden; width: ${wp[1]}; height: ${hp[1]};`}>
+              <img src={pair.bottom.src} alt={pair.bottom.alt}
+                   loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            </div>
+          )}
+        </div>
+      );
+    })}
   </div>
 </section>
 
@@ -149,9 +164,21 @@ for (let i = 0; i < tattoos.length; i += 2) {
 </div>
 
 <style>
-  @media (max-width: 540px) {
-    .pair-row {
-      grid-template-columns: 1fr !important;
+  .gallery-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .gallery-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-scroll.dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-column .img-frame {
+      width: 240px !important;
     }
   }
 </style>
@@ -222,4 +249,44 @@ for (let i = 0; i < tattoos.length; i += 2) {
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
+
+  // Drag to scroll
+  const track = document.getElementById('gallery-track')!;
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasDragged = false;
+
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    hasDragged = false;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 5) hasDragged = true;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Prevent click on lightbox after drag
+  track.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.stopPropagation();
+      e.preventDefault();
+      hasDragged = false;
+    }
+  }, true);
 </script>
