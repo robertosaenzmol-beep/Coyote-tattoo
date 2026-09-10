@@ -1,11 +1,31 @@
 ---
 const reviews = [
-  { name: 'María G.',      stars: 5, text: 'Diseño exactamente como lo quería. Equipo muy profesional y atento.' },
-  { name: 'Carlos M.',     stars: 5, text: 'Mi tercer tatuaje en Coyote y siempre repito. Acabado perfecto.' },
-  { name: 'Laura P.',      stars: 5, text: 'Primera vez tatuándome, me hicieron sentir muy cómoda. Volveré.' },
-  { name: 'Alejandro R.',  stars: 5, text: 'Diseño original, higiene impecable, trato muy cercano.' },
-  { name: 'Sofía L.',      stars: 4, text: 'Gran trabajo. El estudio es acogedor y el equipo muy amable.' },
-  { name: 'Daniel T.',     stars: 5, text: 'Sin duda el mejor estudio de la zona. Se nota la experiencia.' },
+  { name: 'Jesús Hoyos Castillo', stars: 5, text: 'Marta es una máquina, tanto tatuando como en el trato con el cliente, te hace sentir como en casa. Totalmente recomendable.' },
+  { name: 'Alvaro Cri Rod',       stars: 5, text: 'Muy buen trato, atención y los tatuajes quedaron increíbles. Super recomendable.' },
+  { name: 'Borja Sanz',           stars: 5, text: 'Llevo años tatuándome en Coyote Tattoo y el trato profesional y personal es inmejorable. Gracias Marta!!' },
+  { name: 'DZ DocZeta',           stars: 5, text: 'Trato excelente, muy profesional y resultado increíble. Seguiré tatuándome ahí.' },
+  { name: 'Iván St-Germain',      stars: 5, text: 'Marta me ha hecho un tatuaje espectacular. Es una gran profesional y una persona encantadora, nunca pensé que me reiría tanto tatuándome.' },
+  { name: 'OSMEL LUIS C.V',       stars: 5, text: 'Marta eres una artista y sobre todo una persona agradable y amable, tenía un tatuaje hecho que le dio vida y color.' },
+  { name: 'Rakel Antoranz',       stars: 5, text: 'Marta es una artista, una gran profesional y atenta a todos los detalles. Cómo en casa es decir poco.' },
+  { name: 'Marcelo Raimundo',     stars: 5, text: 'El resultado de mi tatuaje quedó increíble. Marta es una excelente tatuadora y el resultado quedó muchísimo mejor de lo esperado.' },
+  { name: 'Pablo Mendez',         stars: 5, text: 'Tercera vez que voy (5 tattoos) y no será la última! Gracias Marta por el excelente trato siempre. Calidad-precio 10.' },
+  { name: 'Arantxa CP',           stars: 5, text: 'Súper cuidadosa y amable, no me dolió nada. Repetiré seguro!!' },
+  { name: 'Susana Lara',          stars: 5, text: 'Sitio de confianza, buen trato y condiciones higiénicas óptimas. Recomendado 100%.' },
+  { name: 'Pablo Lobato Mateo',   stars: 5, text: 'Muy profesional. Un trato sencillo, claro y rápido. Confianza directa. Volveré.' },
+  { name: 'José M. Cedillo',      stars: 5, text: 'Excelente! Desde la asesoría, cita, realización del tatuaje y el seguimiento. Puntualidad, accesibilidad y buen trato.' },
+  { name: 'Andrea Ramos',         stars: 5, text: 'Trato brutal, no puedo estar más contenta.' },
+  { name: 'María OM',             stars: 5, text: 'Genial!!! Majísima Marta, súper amable, muy profesional y para repetir!!!' },
+  { name: 'Espe MS',              stars: 5, text: 'Me hice 2 tatuajes hace unos días y estoy encantada con la profesionalidad, atención, limpieza etc.' },
+  { name: 'Gustavo Calderón',     stars: 5, text: 'Excelente atención, todo muy limpio y Marta te hace sentir como en casa.' },
+  { name: 'Pedro Carpeño',        stars: 5, text: 'Marta es una tatuadora excelente, sus diseños son realmente únicos y su trabajo es sobresaliente.' },
+  { name: 'Sara Cordero',         stars: 5, text: 'Super recomendable, higiene correcta, profesional y trato humano. Un trabajo pulcro y esmerado.' },
+  { name: 'Noelia Dominguez',     stars: 5, text: '100% recomendable, Marta es encantadora y tiene una paciencia infinita!!!' },
+  { name: 'Inés Ortiz',           stars: 5, text: 'Trato genial, muy buena atención y un gran trabajo.' },
+  { name: 'Marlene Vizuete',      stars: 5, text: 'Excelente atención, muy amable te explica todo lo que tienes que saber, limpio y desinfectado.' },
+  { name: 'Fernanda Encina',      stars: 5, text: 'Agradable trato y muy buena profesionalidad. Enhorabuena.' },
+  { name: 'Ana Isabel Alcázar',   stars: 5, text: 'Me encanta! Es un sitio genial y ella lo es más aún, una gran profesional!' },
+  { name: 'L M A',                stars: 5, text: 'Rápido y de confianza 100%. La info súper clara. Y explicando las cosas realmente bien.' },
+  { name: 'Gemma Carrión',        stars: 5, text: 'Estoy encantada con Marta, me ha hecho la micropigmentación del delineado de los ojos y de los labios, es una maravilla.' },
 ];
 
 function stars(n: number) {
@@ -14,15 +34,17 @@ function stars(n: number) {
 ---
 
 <section id="resenas" style="
-  padding: 64px 24px;
+  padding: 64px 0;
   max-width: 1440px; margin: 0 auto;
   border-top: 1px solid #000;
+  overflow: hidden;
 ">
 
   <!-- Header row -->
   <div style="
     display: flex; align-items: flex-end; justify-content: space-between;
     margin-bottom: 32px; gap: 16px; flex-wrap: wrap;
+    padding: 0 24px;
   " class="reveal">
     <div>
       <p style="
@@ -43,28 +65,98 @@ function stars(n: number) {
     ">Ver en Google →</a>
   </div>
 
-  <!-- Reviews grid -->
-  <div style="
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px; background: #000;
-    border: 1px solid #000; border-radius: 10px; overflow: hidden;
+  <!-- Carousel track -->
+  <div class="reviews-carousel" style="
+    display: flex;
+    gap: 1px;
+    width: max-content;
+    animation: scroll-reviews 78s linear infinite;
   ">
-    {reviews.map((r, i) => (
-      <div class="reveal" style="
+    {/* Original set */}
+    {reviews.map((r) => (
+      <div class="review-card" style="
         background: #fff; padding: 20px;
+        border: 1px solid #000; border-radius: 10px;
+        width: 300px; min-width: 300px;
+        flex-shrink: 0;
+        margin-right: 12px;
+        display: flex; flex-direction: column; justify-content: space-between;
       ">
-        <p style="
-          font-family: Georgia, serif; font-size: 12px;
-          color: #000; margin-bottom: 8px; letter-spacing: 0.05em;
-        ">{stars(r.stars)}</p>
-        <p style="
-          font-family: Georgia, serif; font-size: 14px;
-          color: #000; line-height: 1.5; letter-spacing: -0.14px;
-          margin-bottom: 12px;
-        ">"{r.text}"</p>
+        <div>
+          <p style="
+            font-family: Georgia, serif; font-size: 12px;
+            color: #000; margin-bottom: 8px; letter-spacing: 0.05em;
+          ">{stars(r.stars)}</p>
+          <p style="
+            font-family: Georgia, serif; font-size: 14px;
+            color: #000; line-height: 1.5; letter-spacing: -0.14px;
+            margin-bottom: 12px;
+          ">"{r.text}"</p>
+        </div>
+        <p class="tag" style="margin: 0;">{r.name}</p>
+      </div>
+    ))}
+    {/* Duplicate set for seamless loop */}
+    {reviews.map((r) => (
+      <div class="review-card" style="
+        background: #fff; padding: 20px;
+        border: 1px solid #000; border-radius: 10px;
+        width: 300px; min-width: 300px;
+        flex-shrink: 0;
+        margin-right: 12px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      " aria-hidden="true">
+        <div>
+          <p style="
+            font-family: Georgia, serif; font-size: 12px;
+            color: #000; margin-bottom: 8px; letter-spacing: 0.05em;
+          ">{stars(r.stars)}</p>
+          <p style="
+            font-family: Georgia, serif; font-size: 14px;
+            color: #000; line-height: 1.5; letter-spacing: -0.14px;
+            margin-bottom: 12px;
+          ">"{r.text}"</p>
+        </div>
         <p class="tag" style="margin: 0;">{r.name}</p>
       </div>
     ))}
   </div>
 </section>
+
+<style>
+  @keyframes scroll-reviews {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Move exactly half (the original set width) so it loops seamlessly */
+      transform: translateX(-50%);
+    }
+  }
+
+  .reviews-carousel:hover {
+    animation-play-state: paused;
+  }
+
+  /* Fade edges */
+  #resenas {
+    position: relative;
+  }
+  #resenas::before,
+  #resenas::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  #resenas::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+  #resenas::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, transparent);
+  }
+</style>
