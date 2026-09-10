@@ -29,6 +29,7 @@
 
     <!-- Logo -->
     <img
+      id="hero-logo"
       src="/images/logo.webp"
       alt="Coyote Tattoo Logo"
       style="width: 180px; height: 180px; margin: 0 auto 40px; display: block; border-radius: 50%;"
@@ -124,5 +125,12 @@
   @keyframes pulse-line {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
+  }
+  @media (max-width: 640px) {
+    #hero-logo {
+      width: 120px !important;
+      height: 120px !important;
+      margin-bottom: 28px !important;
+    }
   }
 </style>

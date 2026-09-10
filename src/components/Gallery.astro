@@ -70,16 +70,43 @@ for (let i = 0; i < tattoos.length; i += 2) {
     padding: 0 24px;
   ">Trabajo reciente</p>
 
-  <!-- Horizontal scroll track -->
-  <div id="gallery-track" class="gallery-scroll" style="
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 24px 20px;
-    cursor: grab;
-    align-items: start;
-  ">
+  <!-- Horizontal scroll track wrapper -->
+  <div style="position: relative;">
+
+    <!-- Pulsing arrow hint -->
+    <div id="gallery-arrow" style="
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: pulse-arrow 2s ease-in-out infinite;
+      pointer-events: none;
+    ">
+      <p style="
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 11px; font-weight: 500;
+        color: #9b9b9b; letter-spacing: 0.05em;
+        text-transform: uppercase; margin: 0;
+      ">Desliza</p>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="1.5">
+        <path d="M5 12h14"/>
+        <path d="M13 6l6 6-6 6"/>
+      </svg>
+    </div>
+
+    <div id="gallery-track" class="gallery-scroll" style="
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 24px 20px;
+      cursor: grab;
+      align-items: start;
+    ">
     {pairs.map((pair, pi) => {
       const hp = heightPatterns[pi % heightPatterns.length];
       const wp = widthPatterns[pi % widthPatterns.length];
@@ -117,6 +144,7 @@ for (let i = 0; i < tattoos.length; i += 2) {
       );
     })}
   </div>
+  </div> <!-- close wrapper -->
 </section>
 
 <!-- Lightbox -->
@@ -176,9 +204,20 @@ for (let i = 0; i < tattoos.length; i += 2) {
     user-select: none;
   }
 
+  @keyframes pulse-arrow {
+    0%, 100% { opacity: 0.4; transform: translateY(-50%) translateX(0); }
+    50% { opacity: 1; transform: translateY(-50%) translateX(8px); }
+  }
+
   @media (max-width: 640px) {
     .gallery-column .img-frame {
-      width: 240px !important;
+      width: 220px !important;
+      height: auto !important;
+      min-height: 200px;
+      max-height: 320px;
+    }
+    #gallery-arrow {
+      right: 12px !important;
     }
   }
 </style>
@@ -250,8 +289,22 @@ for (let i = 0; i < tattoos.length; i += 2) {
     if (e.key === 'ArrowRight') next();
   });
 
-  // Drag to scroll
+  // Hide arrow after user scrolls
+  const arrow = document.getElementById('gallery-arrow');
   const track = document.getElementById('gallery-track')!;
+  let arrowHidden = false;
+  track.addEventListener('scroll', () => {
+    if (!arrowHidden && track.scrollLeft > 60) {
+      arrowHidden = true;
+      if (arrow) {
+        arrow.style.transition = 'opacity 0.4s ease';
+        arrow.style.opacity = '0';
+        setTimeout(() => arrow.remove(), 500);
+      }
+    }
+  });
+
+  // Drag to scroll
   let isDown = false;
   let startX = 0;
   let scrollLeft = 0;

@@ -23,7 +23,7 @@
 </div>
 
 <!-- Contact section -->
-<section id="contacto" style="
+<section id="contacto" class="contact-grid" style="
   padding: 64px 24px 80px;
   max-width: 1440px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
@@ -107,7 +107,8 @@
 
   <style>
     @media (max-width: 640px) {
-      section { grid-template-columns: 1fr !important; }
+      .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .contact-grid .img-frame { height: 280px !important; }
     }
   </style>
 </section>
