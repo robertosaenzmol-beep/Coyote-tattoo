@@ -1,0 +1,15 @@
+//# allFunctionsCalledOnLoad
+loaded_h_0(function(_){var window=this;
+_.v("vfuNJf");
+_.ntb=class extends _.Io{wa(){}};_.fg(_.DZa,_.ntb);
+_.w();
+_.v("iFQyKf");
+_.Csb=new _.$f(_.EZa);
+_.w();
+_.v("hc6Ubd");
+_.Hf(_.Rxa);_.ttb=function(a){return a.Ba.Sra(a.ka).then(b=>b.wa)};
+_.zs=class extends _.Fi{static Ra(){return{service:{component:_.vs,scheduler:_.Csb}}}constructor(a){super();this.ka=_.otb();this.Ba=a.service.component;this.Aa=a.service.scheduler;this.wa=[];this.oa=[];this.Ea=null;this.getData("p").string(null)}Ac(a){return this.Aa instanceof _.ntb||!this.ka.hasAttribute("autoupdate")?super.Ac(a):{handler:(b,c,d)=>{this.wa.push(b);c==="UjQMac"&&d&&typeof d.tQa==="function"?this.oa.push(d.tQa):c==="nDa8ic"?this.oa.push(null):this.oa.push(e=>{_.sb(e,b);return e});
+this.wa.length===1&&_.Be(()=>{this.Aa.wa(this.ka,this.wa,this.oa).then(()=>{this.wa=[];this.oa=[]})})}}}trigger(a,b){_.Xg(_.Mg(this.ka),a,b,!0,{_retarget:this.ka})}getParams(a){var b=this.getData("p").string(null);return b?_.osb(b,c=>_.Tb(a,c)):this.Sra()?this.Sra().getParams():new a}Vcc(){return this.Ba.Sra(this.ka).then(a=>_.Osb(a)).then(a=>({template:a.wg(),args:a.Gca()}))}Sra(){return this.Ea}};_.ys(_.tr,_.zs);
+_.w();
+});
+// Google Inc.

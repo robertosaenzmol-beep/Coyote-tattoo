@@ -1,0 +1,155 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Coyote Tattoo — Estudio de tatuajes en Alcobendas, Madrid',
+  description = 'Estudio de tatuajes en Alcobendas, Madrid. Diseños a medida. 4,6★ con 148 reseñas en Google.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body class="bg-canvas text-obsidian font-serif antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* ── Design tokens ─────────────────────────────────── */
+  :root {
+    --color-obsidian:    #000000;
+    --color-canvas:      #ffffff;
+    --color-plaster:     #f2f2f2;
+    --color-ash:         #9b9b9b;
+    --font-wordmark:     'Cormorant Garamond', Georgia, serif;
+    --font-serif:        Georgia, 'Times New Roman', serif;
+    --font-sans:         'Inter', system-ui, sans-serif;
+    --text-sm:           14px;
+    --leading-sm:        1.2;
+    --tracking-sm:       -0.14px;
+    --text-caption:      10px;
+    --radius-card:       10px;
+    --radius-pill:       48px;
+    --shadow-pill:       rgba(0,0,0,.10) 0px 4px 4px 0px;
+  }
+
+  /* ── Base ──────────────────────────────────────────── */
+  body {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    letter-spacing: var(--tracking-sm);
+    color: var(--color-obsidian);
+    background: var(--color-canvas);
+  }
+
+  /* ── Hairline image border ─────────────────────────── */
+  .img-frame {
+    border: 1px solid var(--color-obsidian);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    display: block;
+  }
+
+  /* ── Ghost button ──────────────────────────────────── */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--color-obsidian);
+    border-radius: var(--radius-pill);
+    padding: 10px 20px;
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--color-obsidian);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-ghost:hover {
+    background: var(--color-obsidian);
+    color: var(--color-canvas);
+  }
+
+  /* ── Hash tag label ────────────────────────────────── */
+  .tag {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    color: var(--color-ash);
+    letter-spacing: var(--tracking-sm);
+    line-height: var(--leading-sm);
+  }
+
+  /* ── Section hairline ──────────────────────────────── */
+  .hairline {
+    border: none;
+    border-top: 1px solid var(--color-obsidian);
+    margin: 0;
+  }
+
+  /* ── Reveal on scroll ──────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── Masonry columns ───────────────────────────────── */
+  .masonry {
+    columns: 3;
+    column-gap: 20px;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 900px) {
+    .masonry { columns: 2; }
+  }
+  @media (max-width: 540px) {
+    .masonry { columns: 1; }
+  }
+
+  /* ── Thumbnail hover ───────────────────────────────── */
+  .thumb-wrap {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+  }
+  .thumb-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .thumb-wrap:hover img {
+    transform: scale(1.03);
+  }
+</style>

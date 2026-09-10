@@ -1,0 +1,57 @@
+---
+const artists = [
+  {
+    name: 'Artista 1',
+    specialty: 'Especialidad por confirmar',
+    image: '/images/gallery/tattoo-02.webp',
+    bio: 'Información del artista próximamente.',
+    instagram: '#',
+  },
+];
+---
+
+<section id="artistas" style="
+  padding: 64px 24px;
+  max-width: 1440px; margin: 0 auto;
+  border-top: 1px solid #000;
+">
+
+  <!-- Label -->
+  <p style="
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: -0.01em; color: #9b9b9b;
+    margin-bottom: 20px;
+  ">El equipo</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;">
+    {artists.map(artist => (
+      <div class="reveal">
+        <!-- Photo with hairline -->
+        <div class="img-frame" style="margin-bottom: 8px; aspect-ratio: 3/4; overflow: hidden;">
+          <img
+            src={artist.image}
+            alt={artist.name}
+            style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;"
+            loading="lazy"
+          />
+        </div>
+        <p style="
+          font-family: Georgia, serif; font-size: 14px;
+          color: #000; margin: 0 0 2px; line-height: 1.2; letter-spacing: -0.14px;
+        ">{artist.name}</p>
+        <p class="tag" style="margin: 0 0 6px;">{artist.specialty}</p>
+        <p style="
+          font-family: Georgia, serif; font-size: 14px;
+          color: #9b9b9b; margin: 0 0 8px;
+          line-height: 1.4; letter-spacing: -0.14px;
+        ">{artist.bio}</p>
+        <a href={artist.instagram} target="_blank" rel="noopener" style="
+          font-family: 'Inter', system-ui, sans-serif;
+          font-size: 14px; color: #9b9b9b; text-decoration: none;
+          letter-spacing: -0.14px;
+        ">Instagram →</a>
+      </div>
+    ))}
+  </div>
+</section>

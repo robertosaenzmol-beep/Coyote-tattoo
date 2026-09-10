@@ -1,0 +1,37 @@
+---
+import Layout      from '../layouts/Layout.astro';
+import Nav         from '../components/Nav.astro';
+import Hero        from '../components/Hero.astro';
+import Gallery     from '../components/Gallery.astro';
+import Artists     from '../components/Artists.astro';
+import About       from '../components/About.astro';
+import Reviews     from '../components/Reviews.astro';
+import Contact     from '../components/Contact.astro';
+import Footer      from '../components/Footer.astro';
+---
+
+<Layout>
+  <Nav />
+
+  <main style="padding-top: 57px;">  <!-- offset for fixed header height -->
+    <Hero />
+    <Gallery />
+    <Artists />
+    <About />
+    <Reviews />
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- Reveal on scroll -->
+<script>
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>

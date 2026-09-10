@@ -1,0 +1,148 @@
+---
+---
+
+<!-- ── Header ──────────────────────────────────────────── -->
+<header style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid #000;
+">
+
+  <!-- Wordmark -->
+  <a href="#trabajo" style="
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: #000;
+  ">
+    <!-- Avatar circle -->
+    <div style="
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid #000; overflow: hidden; flex-shrink: 0;
+      background: #000; display: flex; align-items: center; justify-content: center;
+    ">
+      <span style="
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 12px; color: #fff; line-height: 1;
+      ">C</span>
+    </div>
+    <!-- Studio name -->
+    <span style="
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 400; line-height: 1.17;
+      letter-spacing: -0.006em; color: #000;
+    ">Coyote Tattoo</span>
+  </a>
+
+  <!-- Desktop: ghost buttons -->
+  <nav class="header-nav" style="display: flex; align-items: center; gap: 8px;">
+    <a href="#contacto" class="btn-ghost">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+        <circle cx="12" cy="11" r="3"/>
+      </svg>
+      Contacto
+    </a>
+    <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20consultar%20sobre%20un%20tatuaje"
+       target="_blank" rel="noopener" class="btn-ghost">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Reservar cita
+    </a>
+  </nav>
+
+  <!-- Mobile: hamburger -->
+  <button id="mob-btn" aria-label="Menú" style="
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  ">
+    <span id="m1" style="display:block; width:20px; height:1px; background:#000; transition:all .25s;"></span>
+    <span id="m2" style="display:block; width:20px; height:1px; background:#000; transition:all .25s;"></span>
+    <span id="m3" style="display:block; width:14px; height:1px; background:#000; transition:all .25s;"></span>
+  </button>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="mob-menu" style="
+  position: fixed; inset: 0; z-index: 45;
+  background: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 24px;
+  transform: translateX(100%); transition: transform .3s ease;
+  border-left: 1px solid #000;
+">
+  {['#trabajo','#artistas','#nosotros','#proceso','#resenas','#contacto'].map((href, i) => {
+    const labels = ['Trabajo','Artistas','Nosotros','Proceso','Reseñas','Contacto'];
+    return (
+      <a href={href} class="mob-link" style="
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 28px; color: #000; text-decoration: none;
+        letter-spacing: -0.02em;
+      ">{labels[i]}</a>
+    );
+  })}
+  <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20consultar"
+     target="_blank" rel="noopener" class="btn-ghost" style="margin-top: 16px;">
+    Reservar cita
+  </a>
+</div>
+
+<!-- ── Floating pill nav ────────────────────────────────── -->
+<nav id="pill-nav" style="
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 50;
+  display: flex; align-items: center; gap: 0;
+  background: #f2f2f2; border-radius: 48px;
+  padding: 8px 20px;
+  box-shadow: rgba(0,0,0,.10) 0px 4px 4px 0px;
+  white-space: nowrap;
+">
+  <a href="#trabajo" class="pill-link">Trabajo</a>
+  <span style="width: 1px; height: 12px; background: #9b9b9b; margin: 0 12px; flex-shrink:0;"></span>
+  <a href="#artistas" class="pill-link">Artistas</a>
+  <span style="width: 1px; height: 12px; background: #9b9b9b; margin: 0 12px; flex-shrink:0;"></span>
+  <a href="#contacto" class="pill-link">Contacto</a>
+</nav>
+
+<style>
+  .pill-link {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #000;
+    text-decoration: none;
+    line-height: 1;
+    transition: color .15s ease;
+  }
+  .pill-link:hover { color: #9b9b9b; }
+
+  @media (max-width: 640px) {
+    .header-nav { display: none !important; }
+    #mob-btn    { display: flex !important; }
+  }
+</style>
+
+<script>
+  const btn  = document.getElementById('mob-btn')!;
+  const menu = document.getElementById('mob-menu')!;
+  const m1   = document.getElementById('m1')!;
+  const m2   = document.getElementById('m2')!;
+  const m3   = document.getElementById('m3')!;
+  let open   = false;
+
+  function toggle() {
+    open = !open;
+    menu.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
+    m1.style.transform   = open ? 'rotate(45deg) translate(4px,4px)' : '';
+    m2.style.opacity     = open ? '0' : '1';
+    m3.style.transform   = open ? 'rotate(-45deg) translate(2px,-2px)' : '';
+    m3.style.width       = open ? '20px' : '14px';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  btn.addEventListener('click', toggle);
+  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { if (open) toggle(); }));
+</script>
