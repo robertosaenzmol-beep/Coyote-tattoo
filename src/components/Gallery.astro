@@ -76,23 +76,28 @@ for (let i = 0; i < tattoos.length; i += 2) {
     <!-- Pulsing arrow hint -->
     <div id="gallery-arrow" style="
       position: absolute;
-      right: 24px;
+      right: 32px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 8px;
-      animation: pulse-arrow 2s ease-in-out infinite;
+      gap: 10px;
+      animation: pulse-arrow 1.6s ease-in-out infinite;
       pointer-events: none;
+      background: rgba(0,0,0,0.75);
+      padding: 12px 20px;
+      border-radius: 48px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     ">
       <p style="
         font-family: 'Inter', system-ui, sans-serif;
-        font-size: 11px; font-weight: 500;
-        color: #9b9b9b; letter-spacing: 0.05em;
+        font-size: 13px; font-weight: 600;
+        color: #fff; letter-spacing: 0.08em;
         text-transform: uppercase; margin: 0;
       ">Desliza</p>
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="1.5">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
         <path d="M5 12h14"/>
         <path d="M13 6l6 6-6 6"/>
       </svg>
@@ -205,8 +210,8 @@ for (let i = 0; i < tattoos.length; i += 2) {
   }
 
   @keyframes pulse-arrow {
-    0%, 100% { opacity: 0.4; transform: translateY(-50%) translateX(0); }
-    50% { opacity: 1; transform: translateY(-50%) translateX(8px); }
+    0%, 100% { opacity: 0.5; transform: translateY(-50%) translateX(0); }
+    50% { opacity: 1; transform: translateY(-50%) translateX(14px); }
   }
 
   @media (max-width: 640px) {

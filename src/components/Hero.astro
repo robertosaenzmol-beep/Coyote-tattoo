@@ -108,23 +108,23 @@
     z-index: 1;
   ">
     <div style="
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, transparent, #666);
-      margin: 0 auto 8px;
-      animation: pulse-line 2s ease-in-out infinite;
+      width: 2px; height: 48px;
+      background: linear-gradient(to bottom, transparent, #fff);
+      margin: 0 auto 10px;
+      animation: pulse-line 1.8s ease-in-out infinite;
     "></div>
     <p style="
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: 10px; color: #666;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 12px; font-weight: 500; color: #999;
+      letter-spacing: 0.12em; text-transform: uppercase;
     ">Scroll</p>
   </div>
 </section>
 
 <style>
   @keyframes pulse-line {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
   }
   @media (max-width: 640px) {
     #hero-logo {
