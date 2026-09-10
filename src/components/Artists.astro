@@ -1,57 +1,167 @@
 ---
-const artists = [
-  {
-    name: 'Artista 1',
-    specialty: 'Especialidad por confirmar',
-    image: '/images/gallery/tattoo-02.webp',
-    bio: 'Información del artista próximamente.',
-    instagram: '#',
-  },
-];
 ---
 
 <section id="artistas" style="
-  padding: 64px 24px;
-  max-width: 1440px; margin: 0 auto;
+  padding: 80px 24px;
+  max-width: 1200px; margin: 0 auto;
   border-top: 1px solid #000;
 ">
 
   <!-- Label -->
   <p style="
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 10px; font-weight: 500;
+    font-size: 12px; font-weight: 500;
     letter-spacing: -0.01em; color: #9b9b9b;
-    margin-bottom: 20px;
-  ">El equipo</p>
+    margin-bottom: 32px;
+  ">La artista</p>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;">
-    {artists.map(artist => (
+  <div class="artist-grid" style="
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  ">
+
+    <!-- Left: Marta photo + bio -->
+    <div class="reveal">
+      <div class="img-frame" style="margin-bottom: 16px; aspect-ratio: 3/4; overflow: hidden;">
+        <img
+          src="/images/marta-working.webp"
+          alt="Marta — Tatuadora en Coyote Tattoo"
+          style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;"
+        />
+      </div>
+      <h2 style="
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(28px, 4vw, 40px); font-weight: 400;
+        line-height: 1.1; letter-spacing: -0.02em; color: #000;
+        margin: 0 0 8px;
+      ">Marta</h2>
+      <p style="
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 13px; font-weight: 500;
+        color: #9b9b9b; margin: 0 0 16px;
+        letter-spacing: -0.01em;
+      ">Tatuadora · Micropigmentación · Piercings</p>
+      <p style="
+        font-family: Georgia, serif; font-size: 17px;
+        color: #000; line-height: 1.6; letter-spacing: -0.14px;
+        margin: 0 0 12px;
+      ">
+        Más de 20 años de experiencia detrás de la máquina.
+        Cada diseño parte de una conversación real — no repetimos,
+        no copiamos. Marta lleva Coyote Tattoo desde 1998 con la
+        misma filosofía: que salgas del estudio con algo que no
+        habías visto antes.
+      </p>
+      <p style="
+        font-family: Georgia, serif; font-size: 17px;
+        color: #9b9b9b; line-height: 1.6; letter-spacing: -0.14px;
+        margin: 0 0 20px;
+      ">
+        148 personas ya confiaron en ella.<br/>
+        Cada una volvió a contarlo.
+      </p>
+      <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20consultar%20sobre%20un%20tatuaje"
+         target="_blank" rel="noopener"
+         class="btn-ghost" style="font-size: 12px;">
+        Reservar con Marta
+      </a>
+    </div>
+
+    <!-- Right: Info cards stacked -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+
+      <!-- Second photo of Marta tattooing -->
       <div class="reveal">
-        <!-- Photo with hairline -->
-        <div class="img-frame" style="margin-bottom: 8px; aspect-ratio: 3/4; overflow: hidden;">
+        <div class="img-frame" style="aspect-ratio: 1/1; overflow: hidden;">
           <img
-            src={artist.image}
-            alt={artist.name}
-            style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;"
-            loading="lazy"
+            src="/images/marta-tattooing.webp"
+            alt="Marta tatuando en el estudio"
+            style="width:100%; height:100%; object-fit:cover; display:block; filter: none;"
           />
         </div>
-        <p style="
-          font-family: Georgia, serif; font-size: 14px;
-          color: #000; margin: 0 0 2px; line-height: 1.2; letter-spacing: -0.14px;
-        ">{artist.name}</p>
-        <p class="tag" style="margin: 0 0 6px;">{artist.specialty}</p>
-        <p style="
-          font-family: Georgia, serif; font-size: 14px;
-          color: #9b9b9b; margin: 0 0 8px;
-          line-height: 1.4; letter-spacing: -0.14px;
-        ">{artist.bio}</p>
-        <a href={artist.instagram} target="_blank" rel="noopener" style="
-          font-family: 'Inter', system-ui, sans-serif;
-          font-size: 14px; color: #9b9b9b; text-decoration: none;
-          letter-spacing: -0.14px;
-        ">Instagram →</a>
       </div>
-    ))}
+
+      <!-- About card -->
+      <div class="reveal" id="nosotros" style="
+        border: 1px solid #000; border-radius: 10px;
+        padding: 28px; background: #fff;
+      ">
+        <p style="
+          font-family: Georgia, serif; font-size: 18px;
+          color: #000; margin-bottom: 16px; line-height: 1;
+        ">Sobre el estudio</p>
+        <p style="
+          font-family: Georgia, serif; font-size: 16px;
+          line-height: 1.6; letter-spacing: -0.14px; color: #000;
+          margin-bottom: 20px;
+        ">
+          Coyote Tattoo lleva abierto desde 1998 en Alcobendas, Madrid.
+          27 años haciendo piezas únicas, con los máximos estándares
+          de higiene y un trato cercano.
+        </p>
+        <div style="display: flex; gap: 28px; margin-bottom: 16px;">
+          <div>
+            <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 32px; color:#000; line-height:1; margin:0;">27</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #9b9b9b; margin:2px 0 0;">años abiertos</p>
+          </div>
+          <div>
+            <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 32px; color:#000; line-height:1; margin:0;">4,6★</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #9b9b9b; margin:2px 0 0;">en Google</p>
+          </div>
+          <div>
+            <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 32px; color:#000; line-height:1; margin:0;">148</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #9b9b9b; margin:2px 0 0;">reseñas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process card -->
+      <div class="reveal" id="proceso" style="
+        border: 1px solid #000; border-radius: 10px;
+        padding: 28px; background: #f2f2f2;
+      ">
+        <p style="
+          font-family: Georgia, serif; font-size: 18px;
+          color: #000; margin-bottom: 20px; line-height: 1;
+        ">Cómo funciona</p>
+        {[
+          { n: '01', t: 'Consulta', d: 'Cuéntanos tu idea por WhatsApp o en el estudio. Sin compromiso.' },
+          { n: '02', t: 'Diseño',   d: 'Preparamos un diseño a medida. Lo revisamos juntos hasta que sea exactamente lo que buscas.' },
+          { n: '03', t: 'Tu cita',  d: 'Te tatuamos con los máximos estándares de higiene. Te explicamos el cuidado posterior.' },
+        ].map(step => (
+          <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #9b9b9b;">
+            <p style="
+              font-family: Georgia, serif; font-size: 12px;
+              color: #9b9b9b; margin: 0 0 4px;
+            ">{step.n}</p>
+            <p style="
+              font-family: Georgia, serif; font-size: 16px;
+              color: #000; font-weight: 400; margin: 0 0 6px;
+              line-height: 1.2; letter-spacing: -0.14px;
+            ">{step.t}</p>
+            <p style="
+              font-family: Georgia, serif; font-size: 15px;
+              color: #9b9b9b; margin: 0;
+              line-height: 1.5; letter-spacing: -0.14px;
+            ">{step.d}</p>
+          </div>
+        ))}
+        <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20reservar"
+           target="_blank" rel="noopener" class="btn-ghost" style="margin-top: 4px; font-size: 12px;">
+          Empezar
+        </a>
+      </div>
+
+    </div>
   </div>
+
+  <style>
+    @media (max-width: 640px) {
+      .artist-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </section>
