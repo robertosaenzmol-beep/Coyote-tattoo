@@ -29,112 +29,125 @@ const tattoos = [
 ];
 ---
 
-<section id="trabajo" style="padding: 32px 24px 80px; max-width: 1440px; margin: 0 auto;">
+<section id="trabajo" style="padding: 48px 0 80px; max-width: 1440px; margin: 0 auto;">
 
   <!-- Section label -->
   <p style="
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 10px; font-weight: 500;
+    font-size: 12px; font-weight: 500;
     letter-spacing: -0.01em; color: #9b9b9b;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    padding: 0 24px;
   ">Trabajo reciente</p>
 
-  <!-- Masonry grid -->
-  <div class="masonry">
-
+  <!-- Horizontal scroll gallery -->
+  <div id="gallery-track" class="gallery-scroll" style="
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 24px 20px;
+    cursor: grab;
+  ">
     {tattoos.map((t, i) => (
-      <div class="masonry-item reveal">
-        <!-- Thumbnail with hairline border -->
+      <div class="gallery-item reveal" style="flex-shrink: 0; scroll-snap-align: start;">
         <div class="img-frame thumb-wrap"
              role="button" tabindex="0"
              data-index={i}
              aria-label={`Ver ${t.alt}`}
-             style="cursor: pointer;">
-          <img src={t.src} alt={t.alt} loading={i < 3 ? 'eager' : 'lazy'} />
+             style="cursor: pointer; width: 320px; height: 400px;">
+          <img src={t.src} alt={t.alt} loading={i < 4 ? 'eager' : 'lazy'}
+               style="width: 100%; height: 100%; object-fit: cover; display: block;" />
         </div>
-        <!-- Title + tags below image -->
-        <div style="margin-top: 6px; padding: 0 2px;">
+        <div style="margin-top: 8px; padding: 0 2px;">
           <p style="
             font-family: Georgia, serif;
-            font-size: 14px; line-height: 1.2;
+            font-size: 16px; line-height: 1.2;
             letter-spacing: -0.14px; color: #000;
             margin: 0 0 4px;
           ">Coyote Tattoo</p>
-          <p class="tag" style="margin: 0;">
+          <p class="tag" style="margin: 0; font-size: 14px;">
             {t.tags.join(' ')}
           </p>
         </div>
       </div>
     ))}
 
-    <!-- About text block (mixed grid cell) -->
-    <div class="masonry-item reveal" id="nosotros" style="
+    <!-- About text block -->
+    <div class="reveal" id="nosotros" style="
       border: 1px solid #000; border-radius: 10px;
-      padding: 20px; background: #fff;
+      padding: 28px; background: #fff;
+      flex-shrink: 0; width: 320px;
+      scroll-snap-align: start;
+      display: flex; flex-direction: column; justify-content: center;
     ">
       <p style="
-        font-family: Georgia, serif; font-size: 14px;
-        color: #000; margin-bottom: 12px; line-height: 1;
+        font-family: Georgia, serif; font-size: 18px;
+        color: #000; margin-bottom: 16px; line-height: 1;
       ">Sobre nosotros</p>
       <p style="
-        font-family: Georgia, serif; font-size: 14px;
-        line-height: 1.5; letter-spacing: -0.14px; color: #000;
-        margin-bottom: 16px;
+        font-family: Georgia, serif; font-size: 16px;
+        line-height: 1.6; letter-spacing: -0.14px; color: #000;
+        margin-bottom: 20px;
       ">
         Coyote Tattoo es un estudio en Alcobendas, Madrid.
         No repetimos diseños. Cada pieza parte de una conversación
         real con el cliente.
       </p>
-      <div style="display: flex; gap: 24px; margin-bottom: 16px;">
+      <div style="display: flex; gap: 28px; margin-bottom: 20px;">
         <div>
-          <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 28px; color:#000; line-height:1; margin:0;">148</p>
-          <p class="tag" style="margin:2px 0 0;">reseñas Google</p>
+          <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 32px; color:#000; line-height:1; margin:0;">148</p>
+          <p class="tag" style="margin:2px 0 0; font-size: 13px;">reseñas Google</p>
         </div>
         <div>
-          <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 28px; color:#000; line-height:1; margin:0;">4,6★</p>
-          <p class="tag" style="margin:2px 0 0;">valoración media</p>
+          <p style="font-family: 'Cormorant Garamond',Georgia,serif; font-size: 32px; color:#000; line-height:1; margin:0;">4,6★</p>
+          <p class="tag" style="margin:2px 0 0; font-size: 13px;">valoración media</p>
         </div>
       </div>
       <a href="#contacto" style="
         font-family: 'Inter', system-ui, sans-serif;
-        font-size: 14px; color: #9b9b9b; text-decoration: none;
+        font-size: 15px; color: #9b9b9b; text-decoration: none;
         letter-spacing: -0.14px;
       ">Ver más →</a>
     </div>
 
     <!-- Process mini block -->
-    <div class="masonry-item reveal" id="proceso" style="
+    <div class="reveal" id="proceso" style="
       border: 1px solid #000; border-radius: 10px;
-      padding: 20px; background: #f2f2f2;
+      padding: 28px; background: #f2f2f2;
+      flex-shrink: 0; width: 320px;
+      scroll-snap-align: start;
+      display: flex; flex-direction: column; justify-content: center;
     ">
       <p style="
-        font-family: Georgia, serif; font-size: 14px;
-        color: #000; margin-bottom: 16px; line-height: 1;
+        font-family: Georgia, serif; font-size: 18px;
+        color: #000; margin-bottom: 20px; line-height: 1;
       ">Cómo funciona</p>
       {[
         { n: '01', t: 'Consulta', d: 'Cuéntanos tu idea por WhatsApp o en el estudio. Sin compromiso.' },
         { n: '02', t: 'Diseño',   d: 'Preparamos un diseño a medida. Lo revisamos juntos hasta que sea exactamente lo que buscas.' },
         { n: '03', t: 'Tu cita', d: 'Te tatuamos con los máximos estándares de higiene. Te explicamos el cuidado posterior.' },
       ].map(step => (
-        <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #9b9b9b;">
+        <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #9b9b9b;">
           <p style="
-            font-family: Georgia, serif; font-size: 10px;
-            color: #9b9b9b; margin: 0 0 2px;
+            font-family: Georgia, serif; font-size: 12px;
+            color: #9b9b9b; margin: 0 0 4px;
           ">{step.n}</p>
           <p style="
-            font-family: Georgia, serif; font-size: 14px;
-            color: #000; font-weight: 400; margin: 0 0 4px;
+            font-family: Georgia, serif; font-size: 16px;
+            color: #000; font-weight: 400; margin: 0 0 6px;
             line-height: 1.2; letter-spacing: -0.14px;
           ">{step.t}</p>
           <p style="
-            font-family: Georgia, serif; font-size: 14px;
+            font-family: Georgia, serif; font-size: 15px;
             color: #9b9b9b; margin: 0;
-            line-height: 1.4; letter-spacing: -0.14px;
+            line-height: 1.5; letter-spacing: -0.14px;
           ">{step.d}</p>
         </div>
       ))}
       <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20reservar"
-         target="_blank" rel="noopener" class="btn-ghost" style="margin-top: 4px; font-size: 10px;">
+         target="_blank" rel="noopener" class="btn-ghost" style="margin-top: 4px; font-size: 12px;">
         Empezar
       </a>
     </div>
@@ -153,14 +166,14 @@ const tattoos = [
   <button id="lb-close" aria-label="Cerrar" style="
     position: absolute; top: 20px; right: 24px;
     background: none; border: none; cursor: pointer;
-    font-family: Georgia, serif; font-size: 14px; color: #9b9b9b;
+    font-family: Georgia, serif; font-size: 16px; color: #9b9b9b;
   ">Cerrar ×</button>
 
   <button id="lb-prev" aria-label="Anterior" style="
     position: absolute; left: 20px;
     background: none; border: none; cursor: pointer; padding: 8px;
   ">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
       <path d="M15 19l-7-7 7-7"/>
     </svg>
   </button>
@@ -174,17 +187,43 @@ const tattoos = [
     position: absolute; right: 20px;
     background: none; border: none; cursor: pointer; padding: 8px;
   ">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
       <path d="M9 5l7 7-7 7"/>
     </svg>
   </button>
 
   <p id="lb-count" style="
     position: absolute; bottom: 20px;
-    font-family: Georgia, serif; font-size: 14px; color: #9b9b9b;
+    font-family: Georgia, serif; font-size: 16px; color: #9b9b9b;
     letter-spacing: -0.14px;
   "></p>
 </div>
+
+<style>
+  /* Hide scrollbar but keep scroll */
+  .gallery-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .gallery-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-scroll.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-item .img-frame {
+      width: 260px !important;
+      height: 340px !important;
+    }
+    #nosotros, #proceso {
+      width: 260px !important;
+    }
+  }
+</style>
 
 <script>
   const imgs = [
@@ -252,4 +291,44 @@ const tattoos = [
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
+
+  // Drag to scroll
+  const track = document.getElementById('gallery-track')!;
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasDragged = false;
+
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    hasDragged = false;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 5) hasDragged = true;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Prevent click on lightbox after drag
+  track.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.stopPropagation();
+      e.preventDefault();
+      hasDragged = false;
+    }
+  }, true);
 </script>
