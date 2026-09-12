@@ -27,299 +27,111 @@ const tattoos = [
   { src: '/images/gallery/tattoo-25.webp', alt: 'Tatuaje' },
   { src: '/images/gallery/tattoo-26.webp', alt: 'Tatuaje' },
 ];
-
-// Height patterns for pairs: alternating for visual variety
-const heightPatterns = [
-  ['420px', '320px'],  // tall + short
-  ['320px', '420px'],  // short + tall
-  ['370px', '370px'],  // equal
-  ['450px', '300px'],  // extra tall + compact
-  ['300px', '450px'],  // compact + extra tall
-  ['370px', '370px'],  // equal
-];
-
-// Width patterns for pairs
-const widthPatterns = [
-  ['340px', '280px'],
-  ['280px', '340px'],
-  ['300px', '320px'],
-  ['360px', '260px'],
-  ['260px', '360px'],
-  ['310px', '310px'],
-];
-
-// Group tattoos in pairs
-const pairs: Array<{ top: typeof tattoos[0]; bottom: typeof tattoos[0] | null; pairIndex: number }> = [];
-for (let i = 0; i < tattoos.length; i += 2) {
-  pairs.push({
-    top: tattoos[i],
-    bottom: tattoos[i + 1] || null,
-    pairIndex: Math.floor(i / 2),
-  });
-}
 ---
 
-<section id="trabajo" style="padding: 80px 0; max-width: 1440px; margin: 0 auto;">
+<section id="trabajo" style="padding: 80px 0; max-width: 1440px; margin: 0 auto; overflow: hidden;">
 
-  <!-- Section label -->
-  <p style="
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 12px; font-weight: 500;
-    letter-spacing: -0.01em; color: #9b9b9b;
-    margin-bottom: 32px;
-    padding: 0 24px;
-  ">Trabajo reciente</p>
-
-  <!-- Horizontal scroll track wrapper -->
-  <div style="position: relative;">
-
-    <!-- Pulsing arrow hint -->
-    <div id="gallery-arrow" style="
-      position: absolute;
-      right: 32px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: pulse-arrow 1.6s ease-in-out infinite;
-      pointer-events: none;
-      background: rgba(0,0,0,0.75);
-      padding: 12px 20px;
-      border-radius: 48px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    ">
-      <p style="
-        font-family: 'Inter', system-ui, sans-serif;
-        font-size: 13px; font-weight: 500;
-        color: #fff; letter-spacing: 0.08em;
-        text-transform: uppercase; margin: 0;
-      ">Desliza</p>
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-        <path d="M5 12h14"/>
-        <path d="M13 6l6 6-6 6"/>
-      </svg>
-    </div>
-
-    <div id="gallery-track" class="gallery-scroll" style="
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 24px 20px;
-      cursor: grab;
-      align-items: start;
-    ">
-    {pairs.map((pair, pi) => {
-      const hp = heightPatterns[pi % heightPatterns.length];
-      const wp = widthPatterns[pi % widthPatterns.length];
-      return (
-        <div class="gallery-column reveal" style={`
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          flex-shrink: 0;
-        `}>
-          {/* Top image */}
-          <div class="img-frame thumb-wrap"
-               role="button" tabindex="0"
-               data-index={pi * 2}
-               aria-label={`Ver ${pair.top.alt}`}
-               style={`cursor: pointer; overflow: hidden; width: ${wp[0]}; height: ${hp[0]};`}>
-            <img src={pair.top.src} alt={pair.top.alt}
-                 loading={pi < 3 ? 'eager' : 'lazy'}
-                 style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-          </div>
-
-          {/* Bottom image */}
-          {pair.bottom && (
-            <div class="img-frame thumb-wrap"
-                 role="button" tabindex="0"
-                 data-index={pi * 2 + 1}
-                 aria-label={`Ver ${pair.bottom.alt}`}
-                 style={`cursor: pointer; overflow: hidden; width: ${wp[1]}; height: ${hp[1]};`}>
-              <img src={pair.bottom.src} alt={pair.bottom.alt}
-                   loading="lazy"
-                   style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-            </div>
-          )}
-        </div>
-      );
-    })}
+  <!-- Section header -->
+  <div style="padding: 0 24px; margin-bottom: 40px; text-align: center;" class="reveal">
+    <p style="
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: -0.01em; color: #9B4DCA;
+      margin-bottom: 12px;
+    ">Trabajo reciente</p>
+    <h2 style="
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(32px, 5vw, 52px); font-weight: 400;
+      line-height: 1.05; letter-spacing: 0.03em; color: #000; margin: 0 0 16px;
+    ">Esto es lo que hacemos</h2>
+    <a href="/galeria" style="
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: #9B4DCA; text-decoration: none;
+      letter-spacing: -0.01em;
+    ">Ver todo →</a>
   </div>
-  </div> <!-- close wrapper -->
+
+  <!-- Auto-scrolling carousel -->
+  <div class="tattoo-carousel" style="
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: scroll-tattoos 90s linear infinite;
+  ">
+    {/* Original set */}
+    {tattoos.map((t, i) => (
+      <div class="tattoo-card" style="
+        flex-shrink: 0;
+        margin-right: 14px;
+        overflow: hidden;
+        border: 1px solid #000;
+        border-radius: 10px;
+        width: 300px; height: 380px;
+      ">
+        <img src={t.src} alt={t.alt}
+             loading={i < 4 ? 'eager' : 'lazy'}
+             style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      </div>
+    ))}
+    {/* Duplicate for seamless loop */}
+    {tattoos.map((t) => (
+      <div class="tattoo-card" style="
+        flex-shrink: 0;
+        margin-right: 14px;
+        overflow: hidden;
+        border: 1px solid #000;
+        border-radius: 10px;
+        width: 300px; height: 380px;
+      " aria-hidden="true">
+        <img src={t.src} alt=""
+             loading="lazy"
+             style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      </div>
+    ))}
+  </div>
 </section>
 
-<!-- Lightbox -->
-<div id="lightbox" style="
-  position: fixed; inset: 0; z-index: 100;
-  background: rgba(255,255,255,0.97);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.25s ease;
-">
-  <button id="lb-close" aria-label="Cerrar" style="
-    position: absolute; top: 20px; right: 24px;
-    background: none; border: none; cursor: pointer;
-    font-family: Georgia, serif; font-size: 16px; color: #9b9b9b;
-  ">Cerrar ×</button>
-
-  <button id="lb-prev" aria-label="Anterior" style="
-    position: absolute; left: 20px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-  ">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
-      <path d="M15 19l-7-7 7-7"/>
-    </svg>
-  </button>
-
-  <img id="lb-img" src="" alt="" style="
-    max-height: 85vh; max-width: 80vw; object-fit: contain;
-    border: 1px solid #000; border-radius: 10px;
-  "/>
-
-  <button id="lb-next" aria-label="Siguiente" style="
-    position: absolute; right: 20px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-  ">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
-      <path d="M9 5l7 7-7 7"/>
-    </svg>
-  </button>
-
-  <p id="lb-count" style="
-    position: absolute; bottom: 20px;
-    font-family: Georgia, serif; font-size: 16px; color: #9b9b9b;
-    letter-spacing: -0.14px;
-  "></p>
-</div>
-
 <style>
-  .gallery-scroll {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .gallery-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  .gallery-scroll.dragging {
-    cursor: grabbing;
-    user-select: none;
+  @keyframes scroll-tattoos {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  @keyframes pulse-arrow {
-    0%, 100% { opacity: 0.5; transform: translateY(-50%) translateX(0); }
-    50% { opacity: 1; transform: translateY(-50%) translateX(14px); }
+  .tattoo-carousel:hover {
+    animation-play-state: paused;
+  }
+
+  /* Fade edges */
+  #trabajo {
+    position: relative;
+  }
+  #trabajo::before,
+  #trabajo::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  #trabajo::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+  #trabajo::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, transparent);
   }
 
   @media (max-width: 640px) {
-    .gallery-column .img-frame {
-      width: 220px !important;
-      height: auto !important;
-      min-height: 200px;
-      max-height: 320px;
+    .tattoo-card {
+      width: 240px !important;
+      height: 300px !important;
     }
-    #gallery-arrow {
-      right: 12px !important;
+    #trabajo::before,
+    #trabajo::after {
+      width: 30px;
     }
   }
 </style>
-
-<script>
-  const imgs = Array.from(document.querySelectorAll('[data-index]')).map(
-    el => (el.querySelector('img') as HTMLImageElement).src
-  );
-  let cur = 0;
-  const lb    = document.getElementById('lightbox')!;
-  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
-  const lbCnt = document.getElementById('lb-count')!;
-
-  function open(i: number) {
-    cur = i;
-    lbImg.src = imgs[cur];
-    lbCnt.textContent = `${cur + 1} / ${imgs.length}`;
-    lb.style.opacity = '1';
-    lb.style.pointerEvents = 'all';
-    document.body.style.overflow = 'hidden';
-  }
-  function close() {
-    lb.style.opacity = '0';
-    lb.style.pointerEvents = 'none';
-    document.body.style.overflow = '';
-  }
-  function prev() { open((cur - 1 + imgs.length) % imgs.length); }
-  function next() { open((cur + 1) % imgs.length); }
-
-  document.querySelectorAll('[data-index]').forEach(el => {
-    const i = parseInt((el as HTMLElement).dataset.index!);
-    el.addEventListener('click', () => open(i));
-    el.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter') open(i); });
-  });
-
-  document.getElementById('lb-close')!.addEventListener('click', close);
-  document.getElementById('lb-prev')!.addEventListener('click', prev);
-  document.getElementById('lb-next')!.addEventListener('click', next);
-  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-  document.addEventListener('keydown', (e) => {
-    if (lb.style.opacity === '0') return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') prev();
-    if (e.key === 'ArrowRight') next();
-  });
-
-  // Hide arrow after user scrolls
-  const arrow = document.getElementById('gallery-arrow');
-  const track = document.getElementById('gallery-track')!;
-  let arrowHidden = false;
-  track.addEventListener('scroll', () => {
-    if (!arrowHidden && track.scrollLeft > 60) {
-      arrowHidden = true;
-      if (arrow) {
-        arrow.style.transition = 'opacity 0.4s ease';
-        arrow.style.opacity = '0';
-        setTimeout(() => arrow.remove(), 500);
-      }
-    }
-  });
-
-  // Drag to scroll
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
-  let hasDragged = false;
-
-  track.addEventListener('mousedown', (e) => {
-    isDown = true;
-    hasDragged = false;
-    track.classList.add('dragging');
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-  });
-  track.addEventListener('mouseleave', () => {
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-  track.addEventListener('mouseup', () => {
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    if (Math.abs(walk) > 5) hasDragged = true;
-    track.scrollLeft = scrollLeft - walk;
-  });
-
-  // Prevent click on lightbox after drag
-  track.addEventListener('click', (e) => {
-    if (hasDragged) {
-      e.stopPropagation();
-      e.preventDefault();
-      hasDragged = false;
-    }
-  }, true);
-</script>

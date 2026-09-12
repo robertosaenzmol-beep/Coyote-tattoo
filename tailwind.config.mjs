@@ -10,8 +10,8 @@ export default {
         ash:       '#9b9b9b',
       },
       fontFamily: {
-        wordmark: ['"Cormorant Garamond"', 'Georgia', 'Times New Roman', 'serif'],
-        serif:    ['"Georgia"', '"Times New Roman"', 'Times', 'serif'],
+        wordmark: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+        serif:    ['"Lora"', '"Georgia"', '"Times New Roman"', 'serif'],
         sans:     ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       fontSize: {

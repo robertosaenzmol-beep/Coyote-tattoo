@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Marta — Coyote Tattoo" description="Marta, tatuadora y fundadora de Coyote Tattoo en Alcobendas. Más de 25 años de experiencia en tatuajes, micropigmentación y piercings.">
+  <Nav />
+
+  <main style="max-width: 1100px; margin: 0 auto; padding: 0 24px 80px;">
+
+    <!-- Page header -->
+    <div style="padding: 100px 0 48px;" class="reveal">
+      <p style="
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12px; font-weight: 500;
+        letter-spacing: -0.01em; color: #9B4DCA;
+        margin-bottom: 12px;
+      ">La artista</p>
+      <h1 style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: clamp(48px, 8vw, 80px); font-weight: 400;
+        line-height: 1; letter-spacing: 0.04em; color: #000; margin: 0;
+      ">Marta</h1>
+      <div style="width: 48px; height: 3px; background: #9B4DCA; margin-top: 20px; border-radius: 2px;"></div>
+    </div>
+
+    <!-- Hero photo -->
+    <div class="marta-hero reveal" style="
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-bottom: 64px; align-items: start;
+    ">
+      <div class="img-frame" style="aspect-ratio: 3/4; overflow: hidden;">
+        <img src="/images/marta-working.webp"
+             alt="Marta — Tatuadora en Coyote Tattoo"
+             style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+      </div>
+      <div class="img-frame" style="aspect-ratio: 1/1; overflow: hidden;">
+        <img src="/images/marta-tattooing.webp"
+             alt="Marta tatuando en el estudio"
+             style="width:100%; height:100%; object-fit:cover; display:block;" />
+      </div>
+    </div>
+
+    <!-- Bio section -->
+    <div class="marta-content reveal" style="
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      margin-bottom: 80px; align-items: start;
+    ">
+      <!-- Left: Story -->
+      <div>
+        <h2 style="
+          font-family: 'Bebas Neue', Impact, sans-serif;
+          font-size: 32px; letter-spacing: 0.03em;
+          color: #000; margin: 0 0 20px;
+        ">Quién es Marta</h2>
+        <p style="
+          font-family: 'Lora', Georgia, serif; font-size: 17px;
+          color: #000; line-height: 1.7; letter-spacing: -0.14px;
+          margin: 0 0 16px;
+        ">
+          En febrero del 98, Marta abrió un estudio de tatuajes en Alcobendas. En esa época
+          tatuarse no era normal — ni estaba de moda ni era fácil encontrar un sitio de confianza.
+          27 años después, sigue en el mismo local.
+        </p>
+        <p style="
+          font-family: 'Lora', Georgia, serif; font-size: 17px;
+          color: #000; line-height: 1.7; letter-spacing: -0.14px;
+          margin: 0 0 16px;
+        ">
+          No tiene un estilo fijo. Hace lo que le pidas — un nombre, un retrato, algo
+          abstracto, algo pequeño, algo que ocupe medio brazo. Lo que sí tiene es criterio:
+          si algo no va a quedar bien, te lo dice.
+        </p>
+        <p style="
+          font-family: 'Lora', Georgia, serif; font-size: 17px;
+          color: #9b9b9b; line-height: 1.7; letter-spacing: -0.14px;
+          margin: 0;
+        ">
+          No trabaja con plantillas. Le cuentas lo que quieres, lo habláis,
+          y sale algo que no existía antes.
+        </p>
+      </div>
+
+      <!-- Right: Style & qualifications -->
+      <div>
+        <h2 style="
+          font-family: 'Bebas Neue', Impact, sans-serif;
+          font-size: 32px; letter-spacing: 0.03em;
+          color: #000; margin: 0 0 20px;
+        ">Estilo y especialidades</h2>
+
+        <div style="margin-bottom: 28px;">
+          {[
+            { label: 'Tatuaje a medida', desc: 'Le cuentas tu idea y te diseña algo. Fine line, blackwork, color, realismo, lettering — lo que necesites.' },
+            { label: 'Micropigmentación', desc: 'Cejas, delineado de ojos y labios. Queda natural.' },
+            { label: 'Piercings', desc: 'Material de primera, aguja nueva siempre. Rápido y limpio.' },
+            { label: 'Cover-ups', desc: 'Tienes un tatuaje viejo que ya no te gusta? Marta le da una segunda vida.' },
+          ].map(item => (
+            <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0;">
+              <p style="
+                font-family: 'Inter', system-ui, sans-serif;
+                font-size: 14px; font-weight: 500; color: #000;
+                margin: 0 0 6px; letter-spacing: -0.01em;
+              ">{item.label}</p>
+              <p style="
+                font-family: 'Lora', Georgia, serif; font-size: 15px;
+                color: #9b9b9b; line-height: 1.6; margin: 0;
+              ">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Stats -->
+        <div style="
+          display: flex; gap: 32px; padding: 24px;
+          background: #F3E8F7; border-radius: 10px;
+        ">
+          <div>
+            <p style="font-family: 'Bebas Neue', Impact, sans-serif; font-size: 40px; color: #9B4DCA; line-height: 1; margin: 0; letter-spacing: 0.02em;">27</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: #9b9b9b; margin: 4px 0 0;">años</p>
+          </div>
+          <div>
+            <p style="font-family: 'Bebas Neue', Impact, sans-serif; font-size: 40px; color: #9B4DCA; line-height: 1; margin: 0; letter-spacing: 0.02em;">4,6★</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: #9b9b9b; margin: 4px 0 0;">en Google</p>
+          </div>
+          <div>
+            <p style="font-family: 'Bebas Neue', Impact, sans-serif; font-size: 40px; color: #9B4DCA; line-height: 1; margin: 0; letter-spacing: 0.02em;">148</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: #9b9b9b; margin: 4px 0 0;">reseñas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;">
+        <span style="
+          display: inline-flex; align-items: center; gap: 6px;
+          font-family: 'Inter', system-ui, sans-serif;
+          font-size: 12px; font-weight: 500; color: #000;
+          background: #F3E8F7; border-radius: 48px;
+          padding: 8px 14px;
+        ">🏳️‍🌈 LGBTQ+ friendly</span>
+        <span style="
+          display: inline-flex; align-items: center; gap: 6px;
+          font-family: 'Inter', system-ui, sans-serif;
+          font-size: 12px; font-weight: 500; color: #000;
+          background: #F3E8F7; border-radius: 48px;
+          padding: 8px 14px;
+        ">♀ Propietaria mujer</span>
+      </div>
+    </div>
+
+    <!-- Qualifications -->
+    <div class="reveal" style="
+      border: 1px solid #000; border-radius: 10px;
+      padding: 40px; margin-bottom: 64px;
+    ">
+      <h2 style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: 28px; letter-spacing: 0.03em;
+        color: #000; margin: 0 0 24px;
+      ">Por qué fiarte</h2>
+      <div class="quals-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        {[
+          { icon: '✓', title: '27 años de experiencia', text: 'Tatuando desde 1998. Ha visto pasar todas las modas y sigue aquí.' },
+          { icon: '✓', title: 'Todo estéril, siempre', text: 'Aguja nueva para cada persona. Material esterilizado. Tintas homologadas. Sin excepciones.' },
+          { icon: '✓', title: 'Tintas veganas', text: 'Hipoalergénicas y de marcas reconocidas. Aptas para pieles sensibles.' },
+          { icon: '✓', title: 'Te acompaña después', text: 'Después del tatuaje Marta te explica el cuidado y está disponible si tienes dudas durante la curación.' },
+        ].map(q => (
+          <div style="display: flex; gap: 12px; align-items: start;">
+            <span style="
+              display: flex; align-items: center; justify-content: center;
+              width: 28px; height: 28px; border-radius: 50%;
+              background: #9B4DCA; color: #fff;
+              font-size: 14px; font-weight: 700; flex-shrink: 0;
+              margin-top: 2px;
+            ">{q.icon}</span>
+            <div>
+              <p style="
+                font-family: 'Inter', system-ui, sans-serif;
+                font-size: 14px; font-weight: 500; color: #000;
+                margin: 0 0 4px;
+              ">{q.title}</p>
+              <p style="
+                font-family: 'Lora', Georgia, serif; font-size: 15px;
+                color: #9b9b9b; line-height: 1.5; margin: 0;
+              ">{q.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center;" class="reveal">
+      <p style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: 32px; letter-spacing: 0.03em; color: #000; margin: 0 0 20px;
+      ">Reserva con Marta</p>
+      <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20reservar%20cita%20con%20Marta"
+         target="_blank" rel="noopener"
+         class="btn-ghost" style="border-color: #9B4DCA; color: #9B4DCA;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .btn-ghost:hover {
+    background: #9B4DCA !important;
+    color: #fff !important;
+    border-color: #9B4DCA !important;
+  }
+  @media (max-width: 640px) {
+    .marta-hero { grid-template-columns: 1fr !important; }
+    .marta-content { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .quals-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<!-- Reveal on scroll -->
+<script>
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>

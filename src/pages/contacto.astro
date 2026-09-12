@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contacto — Coyote Tattoo" description="Contacta con Coyote Tattoo. Calle Real Vieja 32, Alcobendas, Madrid. Consulta gratuita por WhatsApp.">
+  <Nav />
+
+  <main style="max-width: 1100px; margin: 0 auto; padding: 0 24px 80px;">
+
+    <!-- Page header -->
+    <div style="padding: 100px 0 48px;" class="reveal">
+      <p style="
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12px; font-weight: 500;
+        letter-spacing: -0.01em; color: #9B4DCA;
+        margin-bottom: 12px;
+      ">Contacto</p>
+      <h1 style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: clamp(40px, 7vw, 72px); font-weight: 400;
+        line-height: 1; letter-spacing: 0.04em; color: #000; margin: 0 0 16px;
+      ">Ven a vernos</h1>
+      <p style="
+        font-family: 'Lora', Georgia, serif;
+        font-size: 18px; color: #9b9b9b; line-height: 1.6;
+        max-width: 500px;
+      ">Pásate por el estudio o mándanos un WhatsApp. La consulta no cuesta nada.</p>
+      <div style="width: 48px; height: 3px; background: #9B4DCA; margin-top: 24px; border-radius: 2px;"></div>
+    </div>
+
+    <!-- Contact info + map grid -->
+    <div class="contact-grid reveal" style="
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      margin-bottom: 80px; align-items: start;
+    ">
+      <!-- Left: info -->
+      <div>
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div style="padding: 20px 0; border-bottom: 1px solid #e0e0e0;">
+            <p style="
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #9B4DCA;
+              margin: 0 0 6px; letter-spacing: -0.01em;
+            ">Dirección</p>
+            <p style="
+              font-family: 'Lora', Georgia, serif; font-size: 17px;
+              color: #000; line-height: 1.5; margin: 0;
+            ">Calle Real Vieja, 32<br/>28100 Alcobendas, Madrid</p>
+          </div>
+
+          <div style="padding: 20px 0; border-bottom: 1px solid #e0e0e0;">
+            <p style="
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #9B4DCA;
+              margin: 0 0 6px; letter-spacing: -0.01em;
+            ">Teléfono</p>
+            <a href="tel:+34611411420" style="
+              font-family: 'Lora', Georgia, serif; font-size: 17px;
+              color: #000; text-decoration: none;
+            ">611 41 14 20</a>
+          </div>
+
+          <div style="padding: 20px 0; border-bottom: 1px solid #e0e0e0;">
+            <p style="
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #9B4DCA;
+              margin: 0 0 6px; letter-spacing: -0.01em;
+            ">Horario</p>
+            <p style="
+              font-family: 'Lora', Georgia, serif; font-size: 17px;
+              color: #000; line-height: 1.5; margin: 0;
+            ">
+              Lunes: 16:00–20:30<br/>
+              Martes a viernes: 11:00–14:00 / 16:00–20:30<br/>
+              Sábado: 11:00–14:00<br/>
+              <span style="color:#9b9b9b;">Domingo: Cerrado</span>
+            </p>
+          </div>
+
+          <div style="padding: 20px 0;">
+            <p style="
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #9B4DCA;
+              margin: 0 0 6px; letter-spacing: -0.01em;
+            ">WhatsApp</p>
+            <a href="https://wa.me/34611411420?text=Hola,%20me%20gustaría%20consultar%20sobre%20un%20tatuaje"
+               target="_blank" rel="noopener"
+               class="btn-ghost" style="border-color: #9B4DCA; color: #9B4DCA; margin-top: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+          <!-- Badges -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px;">
+            <span style="
+              display: inline-flex; align-items: center; gap: 6px;
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #000;
+              background: #F3E8F7; border-radius: 48px;
+              padding: 8px 14px;
+            ">🏳️‍🌈 LGBTQ+ friendly</span>
+            <span style="
+              display: inline-flex; align-items: center; gap: 6px;
+              font-family: 'Inter', system-ui, sans-serif;
+              font-size: 12px; font-weight: 500; color: #000;
+              background: #F3E8F7; border-radius: 48px;
+              padding: 8px 14px;
+            ">♀ Propietaria mujer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Map -->
+      <div>
+        <div class="img-frame" style="overflow: hidden; height: 400px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3033.5!2d-3.6391!3d40.5424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCalle+Real+Vieja+32+Alcobendas!5e0!3m2!1ses!2ses!4v1"
+            width="100%" height="400"
+            style="border:0; display:block;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación Coyote Tattoo"
+          ></iframe>
+        </div>
+        <p style="
+          font-family: 'Lora', Georgia, serif; font-size: 14px;
+          color: #9b9b9b; margin-top: 8px;
+        ">
+          Calle Real Vieja, 32 · Alcobendas ·
+          <a href="https://maps.google.com/?q=Calle+Real+Vieja+32+Alcobendas+Madrid"
+             target="_blank" rel="noopener" style="color: #9B4DCA; text-decoration: none;">
+            Ver en Maps →
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Process section -->
+    <div class="reveal" style="margin-bottom: 80px;">
+      <h2 style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: clamp(32px, 5vw, 48px); letter-spacing: 0.03em;
+        color: #000; margin: 0 0 40px;
+      ">Cómo funciona</h2>
+
+      <div class="process-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;">
+        {[
+          {
+            n: '01',
+            title: 'Consulta',
+            desc: 'Mándanos un WhatsApp o ven al estudio. Si tienes una foto de referencia, genial. Si solo tienes una idea a medias, también vale. Marta te ayuda a darle forma y te dice cuánto cuesta.',
+          },
+          {
+            n: '02',
+            title: 'Diseño',
+            desc: 'Marta te prepara un diseño. Lo ves, le dices qué cambiar, lo ajustamos. Las veces que haga falta. No se tatúa nada hasta que estés 100% convencido.',
+          },
+          {
+            n: '03',
+            title: 'Tu cita',
+            desc: 'Vienes al estudio, todo está preparado y estéril. Marta te tatúa con calma. Al acabar te explica cómo cuidarlo y te da su número por si tienes cualquier duda.',
+          },
+        ].map(step => (
+          <div style="
+            padding: 32px; border-radius: 10px;
+            background: #fafafa; border: 1px solid #e0e0e0;
+          ">
+            <p style="
+              font-family: 'Bebas Neue', Impact, sans-serif;
+              font-size: 48px; color: #9B4DCA;
+              line-height: 1; margin: 0 0 12px; letter-spacing: 0.02em;
+            ">{step.n}</p>
+            <p style="
+              font-family: 'Bebas Neue', Impact, sans-serif;
+              font-size: 24px; color: #000;
+              letter-spacing: 0.03em; margin: 0 0 12px;
+            ">{step.title}</p>
+            <p style="
+              font-family: 'Lora', Georgia, serif; font-size: 15px;
+              color: #666; line-height: 1.7; margin: 0;
+            ">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Aftercare section -->
+    <div class="reveal" style="
+      border: 1px solid #9B4DCA; border-radius: 10px;
+      padding: 48px; margin-bottom: 64px;
+      background: #F3E8F7;
+    ">
+      <h2 style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: clamp(28px, 4vw, 40px); letter-spacing: 0.03em;
+        color: #9B4DCA; margin: 0 0 32px;
+      ">Cuidado del tatuaje</h2>
+
+      <div class="aftercare-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div>
+          <h3 style="
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 22px; letter-spacing: 0.03em;
+            color: #000; margin: 0 0 16px;
+          ">Primeras 24-48 horas</h3>
+          <ul style="
+            font-family: 'Lora', Georgia, serif; font-size: 15px;
+            color: #000; line-height: 1.8; padding-left: 20px; margin: 0;
+            list-style-type: '→ ';
+          ">
+            <li>Retira el film protector después de 2-4 horas</li>
+            <li>Lava suavemente con agua tibia y jabón neutro (sin frotar)</li>
+            <li>Seca con toques suaves usando papel de cocina limpio</li>
+            <li>Aplica una capa fina de crema cicatrizante (Bepanthen o similar)</li>
+            <li>No vuelvas a cubrirlo con film después del primer lavado</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 22px; letter-spacing: 0.03em;
+            color: #000; margin: 0 0 16px;
+          ">Primeras 2-3 semanas</h3>
+          <ul style="
+            font-family: 'Lora', Georgia, serif; font-size: 15px;
+            color: #000; line-height: 1.8; padding-left: 20px; margin: 0;
+            list-style-type: '→ ';
+          ">
+            <li>Lava 2-3 veces al día con jabón neutro y aplica crema</li>
+            <li>No rasques ni arranques las costras — se caen solas</li>
+            <li>Evita el sol directo, piscinas, mar y saunas</li>
+            <li>Usa ropa holgada sobre la zona tatuada</li>
+            <li>No hagas ejercicio intenso los primeros 3-5 días</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 22px; letter-spacing: 0.03em;
+            color: #000; margin: 0 0 16px;
+          ">A largo plazo</h3>
+          <ul style="
+            font-family: 'Lora', Georgia, serif; font-size: 15px;
+            color: #000; line-height: 1.8; padding-left: 20px; margin: 0;
+            list-style-type: '→ ';
+          ">
+            <li>Usa protector solar SPF50+ en el tatuaje cuando te expongas al sol</li>
+            <li>Hidrata la piel regularmente para mantener los colores vivos</li>
+            <li>Si notas algo raro durante la curación, escríbenos — estamos para ayudarte</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 22px; letter-spacing: 0.03em;
+            color: #000; margin: 0 0 16px;
+          ">Qué NO hacer</h3>
+          <ul style="
+            font-family: 'Lora', Georgia, serif; font-size: 15px;
+            color: #000; line-height: 1.8; padding-left: 20px; margin: 0;
+            list-style-type: '✕ ';
+          ">
+            <li>No uses alcohol, agua oxigenada ni Betadine sobre el tatuaje</li>
+            <li>No lo expongas al sol directo durante al menos 4 semanas</li>
+            <li>No te bañes en piscina ni mar hasta que esté completamente curado</li>
+            <li>No uses cremas con perfume ni vaselina</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div style="text-align: center;" class="reveal">
+      <p style="
+        font-family: 'Lora', Georgia, serif; font-size: 17px;
+        color: #9b9b9b; line-height: 1.6; margin: 0 0 8px;
+      ">¿Alguna duda?</p>
+      <p style="
+        font-family: 'Bebas Neue', Impact, sans-serif;
+        font-size: 28px; letter-spacing: 0.03em; color: #000; margin: 0 0 20px;
+      ">Pregúntanos lo que sea</p>
+      <a href="https://wa.me/34611411420?text=Hola,%20tengo%20una%20duda%20sobre%20el%20proceso"
+         target="_blank" rel="noopener"
+         class="btn-ghost" style="border-color: #9B4DCA; color: #9B4DCA;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .btn-ghost:hover {
+    background: #9B4DCA !important;
+    color: #fff !important;
+    border-color: #9B4DCA !important;
+  }
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .contact-grid .img-frame { height: 280px !important; }
+    .process-grid { grid-template-columns: 1fr !important; }
+    .aftercare-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  }
+</style>
+
+<!-- Reveal on scroll -->
+<script>
+  const obs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
