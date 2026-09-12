@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav    from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Aviso Legal — Coyote Tattoo">
+  <Nav />
+
+  <main style="max-width: 800px; margin: 0 auto; padding: 100px 24px 80px;">
+
+    <h1 style="
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 48px; letter-spacing: 0.04em;
+      color: #000; margin: 0 0 32px;
+    ">Aviso Legal</h1>
+
+    <div class="legal-content" style="
+      font-family: 'Lora', Georgia, serif; font-size: 16px;
+      color: #000; line-height: 1.8;
+    ">
+
+      <h2>1. Datos identificativos</h2>
+      <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico, se informa al usuario de los datos del titular de este sitio web:</p>
+      <ul>
+        <li><strong>Titular:</strong> [NOMBRE COMPLETO O RAZÓN SOCIAL]</li>
+        <li><strong>NIF/CIF:</strong> [NÚMERO]</li>
+        <li><strong>Domicilio:</strong> Calle Real Vieja, 32, 28100 Alcobendas, Madrid</li>
+        <li><strong>Teléfono:</strong> 611 41 14 20</li>
+        <li><strong>Email:</strong> [EMAIL DE CONTACTO]</li>
+        <li><strong>Actividad:</strong> Estudio de tatuajes, micropigmentación y piercings</li>
+      </ul>
+
+      <h2>2. Objeto</h2>
+      <p>El presente aviso legal regula el uso del sitio web de Coyote Tattoo. La navegación por este sitio web atribuye la condición de usuario e implica la aceptación plena de las disposiciones incluidas en este aviso legal.</p>
+
+      <h2>3. Propiedad intelectual e industrial</h2>
+      <p>Todos los contenidos del sitio web, incluyendo textos, fotografías, gráficos, imágenes, iconos, diseños, software y demás contenidos, son propiedad de Coyote Tattoo o de terceros que han autorizado su uso. Queda prohibida su reproducción, distribución, comunicación pública o transformación sin autorización expresa.</p>
+      <p>Las fotografías de tatuajes mostradas en la galería son trabajos originales realizados por Marta en Coyote Tattoo y están protegidos por derechos de autor.</p>
+
+      <h2>4. Condiciones de uso</h2>
+      <p>El usuario se compromete a hacer un uso adecuado de los contenidos y servicios que Coyote Tattoo ofrece a través de su sitio web, absteniéndose de:</p>
+      <ul>
+        <li>Reproducir o copiar los diseños y fotografías mostrados en el sitio web.</li>
+        <li>Utilizar los contenidos con fines comerciales sin autorización.</li>
+        <li>Realizar cualquier acción que pueda dañar, inutilizar o deteriorar el sitio web.</li>
+      </ul>
+
+      <h2>5. Exclusión de responsabilidad</h2>
+      <p>Coyote Tattoo no se hace responsable de los daños que pudieran ocasionarse por un uso inadecuado de este sitio web. Tampoco se garantiza la ausencia de interrupciones o errores en el acceso al sitio web.</p>
+
+      <h2>6. Enlaces a terceros</h2>
+      <p>Este sitio web puede contener enlaces a páginas de terceros (Google Maps, WhatsApp, Instagram). Coyote Tattoo no se responsabiliza del contenido ni de las políticas de privacidad de dichos sitios.</p>
+
+      <h2>7. Legislación aplicable y jurisdicción</h2>
+      <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia que pudiera derivarse del acceso o uso de este sitio web, las partes se someten a los Juzgados y Tribunales de Madrid.</p>
+
+      <p style="color: #9b9b9b; margin-top: 40px; font-size: 14px;">Última actualización: [FECHA]</p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-content h2 {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 24px; letter-spacing: 0.03em;
+    color: #000; margin: 32px 0 12px;
+  }
+  .legal-content p { margin: 0 0 16px; }
+  .legal-content ul { margin: 0 0 16px; padding-left: 24px; }
+  .legal-content li { margin-bottom: 6px; }
+</style>
