@@ -47,7 +47,7 @@
       ">L-V: 11–14h / 16–20:30h · Sáb: 11–14h</p>
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="tel:+34611411420" style="
+        <a href="tel:+34611411420" class="map-btn-dark" style="
           font-family: 'Inter', system-ui, sans-serif;
           font-size: 14px; font-weight: 500;
           color: #000; text-decoration: none;
@@ -61,7 +61,7 @@
           Llamar
         </a>
         <a href="https://maps.google.com/?q=Calle+Real+Vieja+32+Alcobendas+Madrid"
-           target="_blank" rel="noopener" style="
+           target="_blank" rel="noopener" class="map-btn-accent" style="
           font-family: 'Inter', system-ui, sans-serif;
           font-size: 14px; font-weight: 500;
           color: #9B4DCA; text-decoration: none;
@@ -289,13 +289,19 @@
   .explore-card:hover img {
     transform: scale(1.05);
   }
-  .map-grid a[style*="border: 1px solid #000"]:hover {
-    background: #000;
-    color: #fff;
+  .map-btn-dark:hover {
+    background: #000 !important;
+    color: #fff !important;
   }
-  .map-grid a[style*="border: 1px solid #9B4DCA"]:hover {
-    background: #9B4DCA;
-    color: #fff;
+  .map-btn-dark:hover svg {
+    stroke: #fff;
+  }
+  .map-btn-accent:hover {
+    background: #9B4DCA !important;
+    color: #fff !important;
+  }
+  .map-btn-accent:hover svg {
+    stroke: #fff;
   }
   section[style*="background: #000"] a[style*="background: #9B4DCA"]:hover {
     background: #7B3BA8;
