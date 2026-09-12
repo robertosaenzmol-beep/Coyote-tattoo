@@ -27,7 +27,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
 
-  <body class="bg-canvas text-obsidian font-serif antialiased overflow-x-hidden">
+  <body style="overflow-x: hidden;">
     <slot />
   </body>
 </html>
@@ -120,22 +120,6 @@ const {
     transform: none;
   }
 
-  /* ── Masonry columns ───────────────────────────────── */
-  .masonry {
-    columns: 3;
-    column-gap: 20px;
-  }
-  .masonry-item {
-    break-inside: avoid;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 900px) {
-    .masonry { columns: 2; }
-  }
-  @media (max-width: 540px) {
-    .masonry { columns: 1; }
-  }
-
   /* ── Thumbnail hover ───────────────────────────────── */
   .thumb-wrap {
     position: relative;
@@ -151,5 +135,14 @@ const {
   }
   .thumb-wrap:hover img {
     transform: scale(1.03);
+  }
+
+  /* ── Respect reduced motion preference ─────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>

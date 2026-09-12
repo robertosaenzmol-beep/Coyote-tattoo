@@ -93,7 +93,7 @@ for (let i = 0; i < tattoos.length; i += 2) {
     ">
       <p style="
         font-family: 'Inter', system-ui, sans-serif;
-        font-size: 13px; font-weight: 600;
+        font-size: 13px; font-weight: 500;
         color: #fff; letter-spacing: 0.08em;
         text-transform: uppercase; margin: 0;
       ">Desliza</p>
@@ -228,34 +228,9 @@ for (let i = 0; i < tattoos.length; i += 2) {
 </style>
 
 <script>
-  const imgs = [
-    '/images/gallery/tattoo-01.webp',
-    '/images/gallery/tattoo-02.webp',
-    '/images/gallery/tattoo-03.webp',
-    '/images/gallery/tattoo-04.webp',
-    '/images/gallery/tattoo-05.webp',
-    '/images/gallery/tattoo-06.webp',
-    '/images/gallery/tattoo-07.webp',
-    '/images/gallery/tattoo-08.webp',
-    '/images/gallery/tattoo-09.webp',
-    '/images/gallery/tattoo-10.webp',
-    '/images/gallery/tattoo-11.webp',
-    '/images/gallery/tattoo-12.webp',
-    '/images/gallery/tattoo-13.webp',
-    '/images/gallery/tattoo-14.webp',
-    '/images/gallery/tattoo-15.webp',
-    '/images/gallery/tattoo-16.webp',
-    '/images/gallery/tattoo-17.webp',
-    '/images/gallery/tattoo-18.webp',
-    '/images/gallery/tattoo-19.webp',
-    '/images/gallery/tattoo-20.webp',
-    '/images/gallery/tattoo-21.webp',
-    '/images/gallery/tattoo-22.webp',
-    '/images/gallery/tattoo-23.webp',
-    '/images/gallery/tattoo-24.webp',
-    '/images/gallery/tattoo-25.webp',
-    '/images/gallery/tattoo-26.webp',
-  ];
+  const imgs = Array.from(document.querySelectorAll('[data-index]')).map(
+    el => (el.querySelector('img') as HTMLImageElement).src
+  );
   let cur = 0;
   const lb    = document.getElementById('lightbox')!;
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;

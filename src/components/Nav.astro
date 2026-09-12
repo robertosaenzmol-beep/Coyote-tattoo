@@ -13,7 +13,7 @@
 ">
 
   <!-- Wordmark -->
-  <a href="#trabajo" style="
+  <a href="#" style="
     display: flex; align-items: center; gap: 10px;
     text-decoration: none; color: #000;
   ">
@@ -55,7 +55,7 @@
   </nav>
 
   <!-- Mobile: hamburger -->
-  <button id="mob-btn" aria-label="Menú" style="
+  <button id="mob-btn" aria-label="Menú" aria-expanded="false" style="
     display: none; flex-direction: column; gap: 5px;
     background: none; border: none; cursor: pointer; padding: 4px;
   ">
@@ -137,6 +137,7 @@
 
   function toggle() {
     open = !open;
+    btn.setAttribute('aria-expanded', String(open));
     menu.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
     m1.style.transform   = open ? 'rotate(45deg) translate(4px,4px)' : '';
     m2.style.opacity     = open ? '0' : '1';
