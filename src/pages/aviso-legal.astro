@@ -7,19 +7,10 @@ import Footer from '../components/Footer.astro';
 <Layout title="Aviso Legal — Coyote Tattoo">
   <Nav />
 
-  <main style="max-width: 800px; margin: 0 auto; padding: 100px 24px 80px;">
+  <main class="legal-page">
+    <h1 class="legal-page__title">Aviso Legal</h1>
 
-    <h1 style="
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      font-size: 48px; letter-spacing: 0.04em;
-      color: #000; margin: 0 0 32px;
-    ">Aviso Legal</h1>
-
-    <div class="legal-content" style="
-      font-family: 'Lora', Georgia, serif; font-size: 16px;
-      color: #000; line-height: 1.8;
-    ">
-
+    <div class="legal-content">
       <h2>1. Datos identificativos</h2>
       <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico, se informa al usuario de los datos del titular de este sitio web:</p>
       <ul>
@@ -55,7 +46,7 @@ import Footer from '../components/Footer.astro';
       <h2>7. Legislación aplicable y jurisdicción</h2>
       <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia que pudiera derivarse del acceso o uso de este sitio web, las partes se someten a los Juzgados y Tribunales de Madrid.</p>
 
-      <p style="color: #9b9b9b; margin-top: 40px; font-size: 14px;">Última actualización: [FECHA]</p>
+      <p class="legal-content__date">Última actualización: [FECHA]</p>
     </div>
   </main>
 
@@ -63,12 +54,38 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
+  .legal-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 24px 80px;
+  }
+  .legal-page__title {
+    font-family: var(--font-wordmark);
+    font-size: 48px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary);
+    margin: 0 0 32px;
+  }
+  .legal-content {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--color-text-primary);
+    line-height: 1.8;
+  }
   .legal-content h2 {
-    font-family: 'Bebas Neue', Impact, sans-serif;
-    font-size: 24px; letter-spacing: 0.03em;
-    color: #000; margin: 32px 0 12px;
+    font-family: var(--font-wordmark);
+    font-size: 24px;
+    letter-spacing: 0.03em;
+    color: var(--color-text-primary);
+    margin: 32px 0 12px;
   }
   .legal-content p { margin: 0 0 16px; }
   .legal-content ul { margin: 0 0 16px; padding-left: 24px; }
   .legal-content li { margin-bottom: 6px; }
+  .legal-content strong { color: var(--color-accent); }
+  .legal-content__date {
+    color: var(--color-text-secondary);
+    margin-top: 40px;
+    font-size: 14px;
+  }
 </style>

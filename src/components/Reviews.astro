@@ -33,151 +33,336 @@ function stars(n: number) {
 }
 ---
 
-<section id="resenas" style="
-  padding: 120px 0;
-  max-width: 1440px; margin: 0 auto;
-  border-top: 1px solid #000;
-  overflow: hidden;
-">
+<section id="resenas" class="reviews-section">
+  <hr class="hairline" />
 
-  <!-- Header centered -->
-  <div style="
-    text-align: center;
-    margin-bottom: 56px;
-    padding: 0 24px;
-  " class="reveal">
-    <p style="
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 12px; font-weight: 500;
-      letter-spacing: -0.01em; color: #9B4DCA; margin-bottom: 12px;
-    ">Reseñas</p>
-    <p style="
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      font-size: clamp(36px, 5.5vw, 56px); font-weight: 400;
-      line-height: 1.1; letter-spacing: 0.03em; color: #000; margin: 0 auto;
-      max-width: 700px;
-    ">4,6★ en Google.<br/>148 reseñas reales.</p>
-    <a href="https://maps.app.goo.gl/1BLkX6jwvPRLCYDfA" target="_blank" rel="noopener" style="
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 15px; color: #9b9b9b; text-decoration: none; letter-spacing: -0.14px;
-      display: inline-block; margin-top: 20px;
-    ">Ver en Google →</a>
+  <!-- Ink decoration -->
+  <svg class="ink-decor ink-decor--reviews" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <circle cx="50" cy="50" r="25" fill="currentColor" opacity="0.06"/>
+    <circle cx="20" cy="30" r="10" fill="currentColor" opacity="0.04"/>
+    <circle cx="80" cy="70" r="8" fill="currentColor" opacity="0.05"/>
+    <circle cx="70" cy="20" r="4" fill="currentColor" opacity="0.03"/>
+    <circle cx="30" cy="80" r="5" fill="currentColor" opacity="0.04"/>
+  </svg>
+
+  <!-- Header -->
+  <div class="reviews-header reveal">
+    <p class="section-label">Reseñas</p>
+    <p class="reviews-headline">4,6★ en Google.<br/>148 reseñas reales.</p>
+    <a href="https://maps.app.goo.gl/1BLkX6jwvPRLCYDfA" target="_blank" rel="noopener" class="reviews-google-link">Ver en Google →</a>
   </div>
 
-  <!-- Carousel track -->
-  <div class="reviews-carousel" style="
-    display: flex;
-    gap: 0;
-    width: max-content;
-    animation: scroll-reviews 78s linear infinite;
-  ">
-    {/* Original set */}
-    {reviews.map((r) => (
-      <div class="review-card" style="
-        background: #fff; padding: 28px;
-        border: 1px solid #000; border-radius: 10px;
-        width: 340px; min-width: 340px;
-        flex-shrink: 0;
-        margin-right: 14px;
-        display: flex; flex-direction: column; justify-content: space-between;
-      ">
-        <div>
-          <p style="
-            font-family: 'Lora', Georgia, serif; font-size: 14px;
-            color: #000; margin-bottom: 10px; letter-spacing: 0.05em;
-          ">{stars(r.stars)}</p>
-          <p style="
-            font-family: 'Lora', Georgia, serif; font-size: 16px;
-            color: #000; line-height: 1.6; letter-spacing: -0.14px;
-            margin-bottom: 16px;
-          ">"{r.text}"</p>
+  <!-- Drag carousel -->
+  <div class="reviews-track" id="reviews-track">
+    <div class="reviews-carousel" id="reviews-carousel">
+      {reviews.map((r) => (
+        <div class="review-card">
+          <div>
+            <p class="review-stars" aria-label={`${r.stars} de 5 estrellas`}>{stars(r.stars)}</p>
+            <p class="review-text">"{r.text}"</p>
+          </div>
+          <p class="review-name">{r.name}</p>
         </div>
-        <p style="
-          font-family: 'Inter', system-ui, sans-serif;
-          font-size: 13px; font-weight: 500;
-          color: #9b9b9b; margin: 0;
-        ">{r.name}</p>
-      </div>
-    ))}
-    {/* Duplicate set for seamless loop */}
-    {reviews.map((r) => (
-      <div class="review-card" style="
-        background: #fff; padding: 28px;
-        border: 1px solid #000; border-radius: 10px;
-        width: 340px; min-width: 340px;
-        flex-shrink: 0;
-        margin-right: 14px;
-        display: flex; flex-direction: column; justify-content: space-between;
-      " aria-hidden="true">
-        <div>
-          <p style="
-            font-family: 'Lora', Georgia, serif; font-size: 14px;
-            color: #000; margin-bottom: 10px; letter-spacing: 0.05em;
-          ">{stars(r.stars)}</p>
-          <p style="
-            font-family: 'Lora', Georgia, serif; font-size: 16px;
-            color: #000; line-height: 1.6; letter-spacing: -0.14px;
-            margin-bottom: 16px;
-          ">"{r.text}"</p>
-        </div>
-        <p style="
-          font-family: 'Inter', system-ui, sans-serif;
-          font-size: 13px; font-weight: 500;
-          color: #9b9b9b; margin: 0;
-        ">{r.name}</p>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
+
+  <p class="reviews-drag-hint reveal">← Arrastra para explorar →</p>
 </section>
 
 <style>
-  @keyframes scroll-reviews {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .reviews-carousel:hover {
-    animation-play-state: paused;
-  }
-
-  /* Fade edges */
-  #resenas {
+  .reviews-section {
+    padding: 120px 0;
+    max-width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
     position: relative;
   }
-  #resenas::before,
-  #resenas::after {
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 56px;
+    padding: 0 24px;
+  }
+
+  .reviews-headline {
+    font-family: var(--font-wordmark);
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    color: var(--color-text-primary);
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .reviews-google-link {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    letter-spacing: -0.14px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: color 0.2s ease;
+  }
+  .reviews-google-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Drag carousel track */
+  .reviews-track {
+    overflow: hidden;
+    position: relative;
+    padding: 0 24px;
+  }
+
+  .reviews-carousel {
+    display: flex;
+    gap: 14px;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+    touch-action: pan-y;
+  }
+  .reviews-carousel.is-dragging {
+    cursor: grabbing;
+  }
+
+  .review-card {
+    background: var(--color-bg-card);
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    width: 340px;
+    min-width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.3s ease;
+  }
+  .review-card:hover {
+    border-color: rgba(155, 77, 202, 0.3);
+  }
+
+  .review-stars {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .review-text {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    letter-spacing: -0.14px;
+    margin-bottom: 16px;
+  }
+
+  .review-name {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Drag hint */
+  .reviews-drag-hint {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Dark fade edges */
+  .reviews-section::before,
+  .reviews-section::after {
     content: '';
     position: absolute;
-    top: 0; bottom: 0;
+    top: 0;
+    bottom: 0;
     width: 80px;
     z-index: 2;
     pointer-events: none;
   }
-  #resenas::before {
+  .reviews-section::before {
     left: 0;
-    background: linear-gradient(to right, #fff, transparent);
+    background: linear-gradient(to right, var(--color-bg), transparent);
   }
-  #resenas::after {
+  .reviews-section::after {
     right: 0;
-    background: linear-gradient(to left, #fff, transparent);
+    background: linear-gradient(to left, var(--color-bg), transparent);
+  }
+
+  /* Ink decoration */
+  .ink-decor--reviews {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    width: 100px;
+    height: 100px;
+    color: var(--color-accent);
+    pointer-events: none;
+    z-index: 0;
   }
 
   @media (max-width: 640px) {
-    #resenas {
-      padding: 80px 0 !important;
+    .reviews-section {
+      padding: 80px 0;
     }
-    #resenas::before,
-    #resenas::after {
+    .reviews-section::before,
+    .reviews-section::after {
       width: 30px;
     }
     .review-card {
-      width: 280px !important;
-      min-width: 280px !important;
-      padding: 20px !important;
+      width: 280px;
+      min-width: 280px;
+      padding: 20px;
+    }
+    .reviews-track {
+      padding: 0 16px;
+    }
+    .ink-decor--reviews {
+      display: none;
     }
   }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const carousel = document.getElementById('reviews-carousel') as HTMLElement | null;
+    const track = document.getElementById('reviews-track') as HTMLElement | null;
+    if (!carousel || !track) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let translateX = 0;
+    let prevTranslateX = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let animId: number | null = null;
+
+    function getMaxTranslate() {
+      return -(carousel!.scrollWidth - track!.clientWidth + 48);
+    }
+
+    function clamp(val: number) {
+      const max = getMaxTranslate();
+      return Math.max(max - 50, Math.min(50, val));
+    }
+
+    function setPosition(x: number) {
+      translateX = x;
+      carousel!.style.transform = `translateX(${x}px)`;
+    }
+
+    function snapToBounds() {
+      const max = getMaxTranslate();
+      if (translateX > 0) animateTo(0);
+      else if (translateX < max) animateTo(max);
+    }
+
+    function animateTo(target: number) {
+      if (animId) cancelAnimationFrame(animId);
+      function step() {
+        const diff = target - translateX;
+        if (Math.abs(diff) < 0.5) { setPosition(target); return; }
+        setPosition(translateX + diff * 0.12);
+        animId = requestAnimationFrame(step);
+      }
+      animId = requestAnimationFrame(step);
+    }
+
+    // ─── Mouse ──────────────────────────────────
+    carousel.addEventListener('mousedown', (e: MouseEvent) => {
+      isDragging = true;
+      startX = e.clientX;
+      prevTranslateX = translateX;
+      lastX = e.clientX;
+      lastTime = performance.now();
+      velocity = 0;
+      if (animId) cancelAnimationFrame(animId);
+      carousel.classList.add('is-dragging');
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!isDragging) return;
+      const now = performance.now();
+      const dt = now - lastTime;
+      if (dt > 0) velocity = (e.clientX - lastX) / dt;
+      lastX = e.clientX;
+      lastTime = now;
+      setPosition(clamp(prevTranslateX + (e.clientX - startX)));
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('is-dragging');
+      startMomentum();
+    });
+
+    // ─── Touch ──────────────────────────────────
+    carousel.addEventListener('touchstart', (e: TouchEvent) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      prevTranslateX = translateX;
+      lastX = e.touches[0].clientX;
+      lastTime = performance.now();
+      velocity = 0;
+      if (animId) cancelAnimationFrame(animId);
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging) return;
+      const now = performance.now();
+      const dt = now - lastTime;
+      if (dt > 0) velocity = (e.touches[0].clientX - lastX) / dt;
+      lastX = e.touches[0].clientX;
+      lastTime = now;
+      setPosition(clamp(prevTranslateX + (e.touches[0].clientX - startX)));
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      startMomentum();
+    });
+
+    // ─── Momentum ───────────────────────────────
+    function startMomentum() {
+      const friction = 0.94;
+      function step() {
+        if (Math.abs(velocity) < 0.002) { snapToBounds(); return; }
+        velocity *= friction;
+        const next = translateX + velocity * 16;
+        const max = getMaxTranslate();
+        if (next > 0 || next < max) {
+          velocity *= 0.6;
+          snapToBounds();
+          return;
+        }
+        setPosition(next);
+        animId = requestAnimationFrame(step);
+      }
+      animId = requestAnimationFrame(step);
+    }
+
+    // Prevent link clicks during drag
+    carousel.addEventListener('click', (e: MouseEvent) => {
+      if (Math.abs(translateX - prevTranslateX) > 5) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  });
+</script>

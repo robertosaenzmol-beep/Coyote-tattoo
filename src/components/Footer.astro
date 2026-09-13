@@ -2,63 +2,103 @@
 const year = new Date().getFullYear();
 ---
 
-<footer style="
-  border-top: 1px solid #e0e0e0;
-  padding: 24px 24px 32px;
-  max-width: 1440px; margin: 0 auto;
-">
+<footer class="footer">
+  <div class="footer-top">
+    <a href="/" class="footer-brand">Coyote Tattoo</a>
 
-  <div style="
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
-  ">
-    <a href="/" style="
-      font-family: 'Bebas Neue', Impact, sans-serif;
-      font-size: 18px; letter-spacing: 0.04em;
-      color: #000; text-decoration: none;
-    ">Coyote Tattoo</a>
-
-    <p style="
-      font-family: 'Lora', Georgia, serif; font-size: 14px;
-      color: #9b9b9b; letter-spacing: -0.14px; margin: 0;
-    ">
-      © {year} ·
-      <a href="tel:+34611411420" style="color:#9b9b9b; text-decoration:none;">611 41 14 20</a> ·
+    <p class="footer-copy">
+      &copy; {year} &middot;
+      <a href="tel:+34611411420" class="footer-copy__link">611 41 14 20</a> &middot;
       Alcobendas, Madrid
     </p>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <a href="https://www.instagram.com/coyotetattoo/" target="_blank" rel="noopener" style="
-        font-family: 'Inter', system-ui, sans-serif;
-        font-size: 12px; font-weight: 500;
-        color: #9B4DCA; text-decoration: none; letter-spacing: -0.01em;
-      ">Instagram</a>
-
-      <a href="https://wa.me/34611411420" target="_blank" rel="noopener" style="
-        font-family: 'Inter', system-ui, sans-serif;
-        font-size: 12px; font-weight: 500;
-        color: #9B4DCA; text-decoration: none; letter-spacing: -0.01em;
-      ">WhatsApp</a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/coyotetattoo/" target="_blank" rel="noopener" class="footer-social__link">Instagram</a>
+      <a href="https://wa.me/34611411420" target="_blank" rel="noopener" class="footer-social__link">WhatsApp</a>
     </div>
   </div>
 
-  <!-- Legal links -->
-  <div style="
-    display: flex; gap: 16px; flex-wrap: wrap;
-    padding-top: 12px; border-top: 1px solid #f0f0f0;
-  ">
-    <a href="/aviso-legal" style="
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px; color: #9b9b9b; text-decoration: none;
-    ">Aviso legal</a>
-    <a href="/privacidad" style="
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px; color: #9b9b9b; text-decoration: none;
-    ">Privacidad</a>
-    <a href="/cookies" style="
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px; color: #9b9b9b; text-decoration: none;
-    ">Cookies</a>
+  <div class="footer-legal">
+    <a href="/aviso-legal" class="footer-legal__link">Aviso legal</a>
+    <a href="/privacidad" class="footer-legal__link">Privacidad</a>
+    <a href="/cookies" class="footer-legal__link">Cookies</a>
   </div>
-
 </footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding: 24px 24px 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand {
+    font-family: var(--font-wordmark);
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .footer-copy {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    letter-spacing: -0.14px;
+    margin: 0;
+  }
+  .footer-copy__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-copy__link:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-social__link {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+  .footer-social__link:hover {
+    color: var(--color-accent-light);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .footer-legal__link {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-legal__link:hover {
+    color: var(--color-text-secondary);
+  }
+</style>
