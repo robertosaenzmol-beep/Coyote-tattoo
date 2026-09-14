@@ -156,7 +156,7 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
 
   .lightbox__close {
     position: absolute;
-    top: 20px;
+    top: max(20px, env(safe-area-inset-top));
     right: 24px;
     background: none;
     border: none;
@@ -164,6 +164,11 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
     font-family: var(--font-serif);
     font-size: 16px;
     color: var(--color-text-secondary);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .lightbox__close:hover {
@@ -175,7 +180,12 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 12px;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .lightbox__nav--prev {
@@ -219,7 +229,8 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
     font-family: var(--font-sans);
     font-size: 13px;
     font-weight: 500;
-    padding: 8px 18px;
+    padding: 10px 18px;
+    min-height: 44px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-border);
     background: transparent;
@@ -317,5 +328,22 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
       if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
     });
+
+    // Swipe to navigate on mobile
+    let swipeStartX = 0;
+    let swipeStartY = 0;
+    lb.addEventListener('touchstart', (e: TouchEvent) => {
+      swipeStartX = e.touches[0].clientX;
+      swipeStartY = e.touches[0].clientY;
+    }, { passive: true });
+    lb.addEventListener('touchend', (e: TouchEvent) => {
+      if (!lb.classList.contains('is-open')) return;
+      const dx = e.changedTouches[0].clientX - swipeStartX;
+      const dy = e.changedTouches[0].clientY - swipeStartY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) next();
+        else prev();
+      }
+    }, { passive: true });
   });
 </script>

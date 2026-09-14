@@ -86,17 +86,21 @@ const year = new Date().getFullYear();
 
   .footer-legal {
     display: flex;
-    gap: 16px;
+    gap: 8px 16px;
     flex-wrap: wrap;
     padding-top: 12px;
     border-top: 1px solid var(--color-border-subtle);
   }
   .footer-legal__link {
     font-family: var(--font-sans);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--color-text-muted);
     text-decoration: none;
     transition: color 0.2s ease;
+    padding: 8px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
   .footer-legal__link:hover {
     color: var(--color-text-secondary);
