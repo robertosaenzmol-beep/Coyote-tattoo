@@ -891,8 +891,8 @@ const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
     .cookie-banner__btn {
       flex: 1;
     }
-    /* Push above sticky WA bar when both visible */
-    .cookie-banner {
+    /* Push above sticky WA bar only when visible */
+    .cookie-banner.is-visible {
       bottom: 52px;
     }
   }
