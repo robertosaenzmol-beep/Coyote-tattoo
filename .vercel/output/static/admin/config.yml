@@ -1,0 +1,71 @@
+# Sveltia CMS config para Coyote Tattoo
+# Docs: https://github.com/sveltia/sveltia-cms
+
+backend:
+  name: github
+  repo: TU_USUARIO/coyote-tattoo   # ← Cambiar por el repo real
+  branch: main
+  base_url: https://sveltia-cms-auth.YOUR_WORKER.workers.dev  # ← Auth worker (ver README)
+
+# Almacenamiento de medios
+media_folder: "public/images/gallery"
+public_folder: "/images/gallery"
+
+# Locale
+locale: es
+
+collections:
+  # ──────────────────────────────────────────
+  # GALERÍA — el cliente sube sus fotos aquí
+  # ──────────────────────────────────────────
+  - name: "gallery"
+    label: "Galería"
+    label_singular: "Foto"
+    folder: "src/content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Título / descripción", name: "title", widget: "string", required: false }
+      - label: "Estilo"
+        name: "style"
+        widget: "select"
+        options: ["Línea fina", "Realismo", "Blackwork", "Neotradicional", "Geométrico", "Acuarela", "Otro"]
+        required: false
+      - { label: "Artista", name: "artist", widget: "string", required: false }
+      - { label: "Destacado (aparece primero)", name: "featured", widget: "boolean", default: false }
+      - { label: "Publicado", name: "published", widget: "boolean", default: true }
+
+  # ──────────────────────────────────────────
+  # ARTISTAS
+  # ──────────────────────────────────────────
+  - name: "artists"
+    label: "Artistas"
+    label_singular: "Artista"
+    folder: "src/content/artists"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre", name: "name", widget: "string" }
+      - { label: "Especialidad", name: "specialty", widget: "string" }
+      - { label: "Foto de perfil", name: "photo", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Instagram (URL)", name: "instagram", widget: "string", required: false }
+      - { label: "Orden", name: "order", widget: "number", default: 99 }
+
+  # ──────────────────────────────────────────
+  # AJUSTES GENERALES
+  # ──────────────────────────────────────────
+  - name: "settings"
+    label: "Ajustes"
+    files:
+      - name: "general"
+        label: "Información general"
+        file: "src/content/settings/general.json"
+        fields:
+          - { label: "Nombre del estudio", name: "name", widget: "string" }
+          - { label: "Teléfono", name: "phone", widget: "string" }
+          - { label: "Dirección", name: "address", widget: "string" }
+          - { label: "Horario", name: "hours", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "WhatsApp número", name: "whatsapp", widget: "string" }

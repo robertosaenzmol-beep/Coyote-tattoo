@@ -2,11 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Nav    from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getCachedPosts } from '../lib/instagram';
 
-const tattoos = Array.from({ length: 26 }, (_, i) => ({
-  src: `/images/gallery/tattoo-${String(i + 1).padStart(2, '0')}.webp`,
-  alt: `Tatuaje ${i + 1}`,
-}));
+const instagramPosts = await getCachedPosts(120);
+const useInstagram = instagramPosts.length > 0;
+
+const tattoos = useInstagram
+  ? instagramPosts.map((post, i) => ({
+      src: post.media_url,
+      alt: `Tatuaje ${i + 1}`,
+    }))
+  : Array.from({ length: 26 }, (_, i) => ({
+      src: `/images/gallery/tattoo-${String(i + 1).padStart(2, '0')}.webp`,
+      alt: `Tatuaje ${i + 1}`,
+    }));
 ---
 
 <Layout title="Galería — Coyote Tattoo" description="Todos los trabajos de Coyote Tattoo. Tatuajes únicos hechos a medida en Alcobendas, Madrid.">
@@ -31,6 +40,11 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
       <button class="filter-tab" data-filter="fine-line" role="tab" aria-selected="false">Fine Line</button>
       <button class="filter-tab" data-filter="lettering" role="tab" aria-selected="false">Lettering</button>
     </div>
+
+    <!-- Instagram source label -->
+    {useInstagram && (
+      <p class="instagram-label reveal">Últimos trabajos · actualizado desde Instagram</p>
+    )}
 
     <!-- Masonry-style grid -->
     <div class="gallery-grid">
@@ -109,17 +123,36 @@ const tattoos = Array.from({ length: 26 }, (_, i) => ({
 
   .gallery-item .img-frame {
     overflow: hidden;
-    transition: transform 0.3s ease;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    transition: border-color 0.3s ease;
   }
 
   .gallery-item:hover .img-frame {
-    transform: scale(1.01);
+    border-color: var(--color-accent);
   }
 
   .gallery-item__img {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .gallery-item:hover .gallery-item__img {
+    transform: scale(1.03);
+  }
+
+  /* ── Instagram label ───────────────────────────────── */
+  .instagram-label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
   /* ── CTA section ───────────────────────────────────── */

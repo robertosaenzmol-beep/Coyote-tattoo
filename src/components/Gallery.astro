@@ -1,5 +1,7 @@
 ---
-const tattoos = [
+import { getCachedPosts } from '../lib/instagram';
+
+const fallbackTattoos = [
   { src: '/images/gallery/tattoo-01.webp', alt: 'Tatuaje' },
   { src: '/images/gallery/tattoo-02.webp', alt: 'Tatuaje' },
   { src: '/images/gallery/tattoo-03.webp', alt: 'Tatuaje' },
@@ -27,6 +29,11 @@ const tattoos = [
   { src: '/images/gallery/tattoo-25.webp', alt: 'Tatuaje' },
   { src: '/images/gallery/tattoo-26.webp', alt: 'Tatuaje' },
 ];
+
+const instagramPosts = await getCachedPosts(26);
+const tattoos = instagramPosts.length > 0
+  ? instagramPosts.map((post) => ({ src: post.media_url, alt: 'Tatuaje' }))
+  : fallbackTattoos;
 ---
 
 <section id="trabajo" class="gallery-section">
