@@ -5,6 +5,7 @@ node_modules/
 !.env.example
 .DS_Store
 .astro/
+.vercel/
 
 # Saved webpages / junk
 images/MARTA*
