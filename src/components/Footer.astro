@@ -22,6 +22,7 @@ const year = new Date().getFullYear();
     <a href="/aviso-legal" class="footer-legal__link">Aviso legal</a>
     <a href="/privacidad" class="footer-legal__link">Privacidad</a>
     <a href="/cookies" class="footer-legal__link">Cookies</a>
+    <button id="footer-cookie-manage" class="footer-legal__link footer-legal__btn">Gestionar cookies</button>
   </div>
 </footer>
 
@@ -105,4 +106,32 @@ const year = new Date().getFullYear();
   .footer-legal__link:hover {
     color: var(--color-text-secondary);
   }
+  .footer-legal__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('footer-cookie-manage');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      localStorage.removeItem('cookie-consent');
+      // Delete GA cookies
+      document.cookie.split(';').forEach(c => {
+        const name = c.trim().split('=')[0];
+        if (name.startsWith('_ga')) {
+          document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.' + location.hostname;
+          document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        }
+      });
+      const banner = document.getElementById('cookie-banner');
+      if (banner) {
+        banner.classList.add('is-visible');
+        banner.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+</script>
