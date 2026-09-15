@@ -5,3 +5,8 @@ node_modules/
 !.env.example
 .DS_Store
 .astro/
+
+# Saved webpages / junk
+images/MARTA*
+images/video*
+/*.html
