@@ -7,8 +7,17 @@ export interface InstagramPost {
   permalink: string;
 }
 
+async function getToken(): Promise<string | null> {
+  try {
+    const { kv } = await import('@vercel/kv');
+    const kvToken = await kv.get<string>('instagram_access_token');
+    if (kvToken) return kvToken;
+  } catch { /* KV unavailable, fall back to env */ }
+  return import.meta.env.INSTAGRAM_ACCESS_TOKEN || null;
+}
+
 export async function fetchInstagramPosts(limit: number = 120): Promise<InstagramPost[]> {
-  const token = import.meta.env.INSTAGRAM_ACCESS_TOKEN;
+  const token = await getToken();
   const userId = import.meta.env.INSTAGRAM_USER_ID;
 
   if (!token || !userId) {
