@@ -8,6 +8,7 @@ interface InstagramPost {
   thumbnail_url?: string;
   timestamp: string;
   permalink: string;
+  caption?: string;
 }
 
 const KV_TOKEN_KEY = 'instagram_access_token';
@@ -88,7 +89,7 @@ async function fetchInstagramPosts(token: string, limit: number = 120): Promise<
   const userId = process.env.INSTAGRAM_USER_ID;
   if (!userId) return [];
 
-  const fields = 'id,media_type,media_url,thumbnail_url,timestamp,permalink';
+  const fields = 'id,media_type,media_url,thumbnail_url,timestamp,permalink,caption';
   const fetchLimit = Math.min(limit * 2, 200);
   const url = `https://graph.instagram.com/${userId}/media?fields=${fields}&limit=${fetchLimit}&access_token=${token}`;
 
@@ -104,6 +105,7 @@ async function fetchInstagramPosts(token: string, limit: number = 120): Promise<
 
   return posts
     .filter((post) => post.media_type === 'IMAGE')
+    .filter((post) => post.caption?.toLowerCase().includes('#web'))
     .slice(0, limit);
 }
 

@@ -7,18 +7,47 @@ import { getCachedPosts } from '../lib/instagram';
 const instagramPosts = await getCachedPosts(120);
 const useInstagram = instagramPosts.length > 0;
 
+const fallbackAlts = [
+  'Tatuaje realismo catrina rezando en brazo — Coyote Tattoo Alcobendas',
+  'Tatuaje guerrero con tocado de oso en brazo — Coyote Tattoo Alcobendas',
+  'Tatuaje tradicional serpiente con rosa y lettering Trust No One en antebrazo — Coyote Tattoo Alcobendas',
+  'Tatuaje realismo aguila con alas abiertas en espalda — Coyote Tattoo Alcobendas',
+  'Tatuaje realismo catrina con dedo en labios en pierna — Coyote Tattoo Alcobendas',
+  'Fachada del estudio Coyote Tattoo en Calle Real Vieja, Alcobendas',
+  'Tatuaje reloj de bolsillo con lettering en antebrazo — Coyote Tattoo Alcobendas',
+  'Tatuaje retrato realista de bebe con pompas de jabon en hombro — Coyote Tattoo Alcobendas',
+  'Tatuaje botanico crisantemos y mariposa en cadera — Coyote Tattoo Alcobendas',
+  'Tatuaje rosa realista con nombre Lola en mano — Coyote Tattoo Alcobendas',
+  'Tatuaje rosa roja a color en costillas — Coyote Tattoo Alcobendas',
+  'Tatuaje tribal mariposa blackwork en zona lumbar — Coyote Tattoo Alcobendas',
+  'Tatuaje realismo mujer steampunk con mascara de gas en pierna — Coyote Tattoo Alcobendas',
+  'Tatuaje tela de arana en codo con lettering Mundana — Coyote Tattoo Alcobendas',
+  'Tatuaje fine line corona de laurel con fecha en antebrazo — Coyote Tattoo Alcobendas',
+  'Tatuaje blackwork cabeza de demonio con cuernos en muslo — Coyote Tattoo Alcobendas',
+  'Tatuaje blackwork tribal con motivo de corazon en pecho — Coyote Tattoo Alcobendas',
+  'Tatuaje lettering nombres Isaac y Natalia en munecas — Coyote Tattoo Alcobendas',
+  'Tatuaje blackwork brazalete geometrico con lineas y X en antebrazo — Coyote Tattoo Alcobendas',
+  'Tatuajes a juego silueta de pais fine line en tobillos — Coyote Tattoo Alcobendas',
+  'Tatuaje realismo ala con plumas en antebrazo — Coyote Tattoo Alcobendas',
+  'Tatuajes minimalistas pajaro fine line a juego — Coyote Tattoo Alcobendas',
+  'Tatuaje bandera cubana estilo acuarela a color en hombro — Coyote Tattoo Alcobendas',
+  'Tatuaje fine line corazon con caracteres japoneses y numeros romanos — Coyote Tattoo Alcobendas',
+  'Tatuaje fine line estrella de mar y caracola en costado — Coyote Tattoo Alcobendas',
+  'Tatuaje fine line cedro en pecho — Coyote Tattoo Alcobendas',
+];
+
 const tattoos = useInstagram
   ? instagramPosts.map((post, i) => ({
       src: post.media_url,
-      alt: `Tatuaje ${i + 1}`,
+      alt: `Tatuaje de Coyote Tattoo Alcobendas ${i + 1}`,
     }))
-  : Array.from({ length: 26 }, (_, i) => ({
+  : fallbackAlts.map((alt, i) => ({
       src: `/images/gallery/tattoo-${String(i + 1).padStart(2, '0')}.webp`,
-      alt: `Tatuaje ${i + 1}`,
+      alt,
     }));
 ---
 
-<Layout title="Galería — Coyote Tattoo" description="Todos los trabajos de Coyote Tattoo. Tatuajes únicos hechos a medida en Alcobendas, Madrid.">
+<Layout title="Galería — Coyote Tattoo" description="Galería de tatuajes de Coyote Tattoo en Alcobendas. Realismo, blackwork, fine line, color y lettering. Cada diseño es único, hecho a medida por Marta.">
   <Nav />
 
   <main id="main-content" class="galeria-main">

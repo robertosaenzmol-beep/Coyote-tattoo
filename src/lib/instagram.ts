@@ -5,6 +5,7 @@ export interface InstagramPost {
   thumbnail_url?: string;
   timestamp: string;
   permalink: string;
+  caption?: string;
 }
 
 async function getToken(): Promise<string | null> {
@@ -25,7 +26,7 @@ export async function fetchInstagramPosts(limit: number = 120): Promise<Instagra
   }
 
   try {
-    const fields = 'id,media_type,media_url,thumbnail_url,timestamp,permalink';
+    const fields = 'id,media_type,media_url,thumbnail_url,timestamp,permalink,caption';
     const fetchLimit = Math.min(limit * 2, 200);
     const url = `https://graph.instagram.com/${userId}/media?fields=${fields}&limit=${fetchLimit}&access_token=${token}`;
 
@@ -42,6 +43,7 @@ export async function fetchInstagramPosts(limit: number = 120): Promise<Instagra
 
     return posts
       .filter((post) => post.media_type === 'IMAGE')
+      .filter((post) => post.caption?.toLowerCase().includes('#web'))
       .slice(0, limit);
   } catch (error) {
     console.error('Instagram fetch error:', error);
